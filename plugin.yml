@@ -16,3 +16,4 @@ commands:
     description: "Heal and Feed UI Command"
     usage: /healfeed
     permission: "hfui.command"
+    
