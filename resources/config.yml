@@ -1,0 +1,29 @@
+# HEAL AND FEED CONFIGURATION
+#
+# HELP:
+# \n for new line
+# § for color and special symbols
+#
+# Command:
+no-permission: "§4You don't have §aHeal Command §4permission"
+#
+# Message:
+message-heal: "§aYou've been healed"
+message-feed: "§aYou're full"
+#
+# UI
+title: "§aHeal§7And§cFeed"
+button-heal: "§aHeal"
+button-feed: "§cFeed"
+#
+# PERMISSION:
+# hfui.command - Heal And Feed UI Command Permission
+# heal.command - Heal Command and Heal Other Player Permission
+# feed.command - Feed Command and Feed Other Player Permission
+#
+# COMMANDS:
+# /healfeed - Heal and Feed UI Command
+# /heal - Heal Command
+# /heal <PlayerName> - Heal Other Player Command
+# /feed - Feed Command
+# /feed <PlayerName> - Feed Other Player Command
