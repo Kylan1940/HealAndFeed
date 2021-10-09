@@ -4,6 +4,12 @@
 # \n for new line
 # § for color and special symbols
 #
+# With Economy
+economy: true
+# if with economy, how much money must be paid?
+money-heal: 1
+money-feed: 3
+#
 # Command:
 no-permission: "§4You don't have §aHeal Command §4permission"
 #
@@ -16,14 +22,3 @@ title: "§aHeal§7And§cFeed"
 button-heal: "§aHeal"
 button-feed: "§cFeed"
 #
-# PERMISSION:
-# hfui.command - Heal And Feed UI Command Permission
-# heal.command - Heal Command and Heal Other Player Permission
-# feed.command - Feed Command and Feed Other Player Permission
-#
-# COMMANDS:
-# /healfeed - Heal and Feed UI Command
-# /heal - Heal Command
-# /heal <PlayerName> - Heal Other Player Command
-# /feed - Feed Command
-# /feed <PlayerName> - Feed Other Player Command
