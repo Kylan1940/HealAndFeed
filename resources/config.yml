@@ -4,12 +4,6 @@
 # \n for new line
 # § for color and special symbols
 #
-# With Economy
-economy: true
-# if with economy, how much money must be paid?
-money-heal: 1
-money-feed: 3
-#
 # Command:
 no-permission: "§4You don't have §aHeal Command §4permission"
 #
@@ -21,4 +15,3 @@ message-feed: "§aYou're full"
 title: "§aHeal§7And§cFeed"
 button-heal: "§aHeal"
 button-feed: "§cFeed"
-#

@@ -9,9 +9,9 @@ Heal and Feed Command For PocketMine-MP. If you are have a question, please make
 >- Pay for heal and feed (soon)
 
 # Download
-| Version | Phar | Zip | Support |
-|---|---|---|---|
-| 1.0.0 | [Download](https://github.com/Kylan1940/HealAndFeed/releases/download/HealAndFeed/HealAndFeed_v1.0.0.phar) | [Download](https://github.com/Kylan1940/HealAndFeed/archive/refs/tags/HealAndFeed.zip) | 3.0.0 |
+| Version | Phar | Support |
+|---|---|---|
+| 1.0.0 | [Download](https://github.com/Kylan1940/HealAndFeed/releases/download/HealAndFeed/HealAndFeed_v1.0.0.phar) |  3.0.0 |
 
 # Installation
 1. Download the [plugin](https://github.com/Kylan1940/HealAndFeed/releases/download/HealAndFeed/HealAndFeed_v1.0.0.phar)
@@ -23,6 +23,6 @@ Heal and Feed Command For PocketMine-MP. If you are have a question, please make
 |---|---|---|---|
 | /healfeed | hfui.command | OP | Heal And Feed UI Command |
 | /heal | heal.command | OP | Heal Command |
-| /heal <PlayerName> | heal.command | OP | Heal Other Player |
+| /heal (PlayerName) | heal.command | OP | Heal Other Player |
 | /feed | feed.command | OP | Feed Command |
-| /feed <PlayerName> | feed.command | OP | Feed Other Player |
+| /feed (PlayerName) | feed.command | OP | Feed Other Player |
