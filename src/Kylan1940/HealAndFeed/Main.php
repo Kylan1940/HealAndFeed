@@ -16,7 +16,7 @@ class Main extends PluginBase implements Listener {
 
     public function onCommand(CommandSender $sender, Command $cmd, string $label, array $args) : bool{
         if($sender instanceof Player){
-            if($sender->hasPermission("heal.command")){
+            if($sender->hasPermission("healandfeed-heal.command")){
                 if($cmd->getName() == "heal"){
                     $sender->setHealth($sender->getMaxHealth());
                     $sender->sendMessage($this->getConfig()->get("message-heal"));
@@ -24,7 +24,7 @@ class Main extends PluginBase implements Listener {
             } else {
               $sender->sendMessage($this->getConfig()->get("no-permission"));
             }
-            if($sender->hasPermission("feed.command")){
+            if($sender->hasPermission("healandfeed-feed.command")){
                 if($cmd->getName() == "feed"){
                     $sender->setFood(20);
                     $sender->setSaturation(20);
@@ -33,7 +33,7 @@ class Main extends PluginBase implements Listener {
             } else {
               $sender->sendMessage($this->getConfig()->get("no-permission"));
             }
-            if($sender->hasPermission("hfui.command")){
+            if($sender->hasPermission("healandfeed-ui.command")){
               if($cmd->getName() == "healfeed"){
                 $this->HealFeed($sender);
               }

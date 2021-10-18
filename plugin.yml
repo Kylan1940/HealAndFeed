@@ -7,13 +7,12 @@ commands:
   heal:
     description: "Added max player health"
     usage: /heal
-    permission: "heal.command"
+    permission: "healandfeed-heal.command"
   feed:
     description: "Restore hunger player and hunger saturation player"
     usage: /feed
-    permission: "feed.command"
+    permission: "healandfeed-feed.command"
   healfeed:
     description: "Heal and Feed UI Command"
     usage: /healfeed
-    permission: "hfui.command"
-    
+    permission: "healandfeed-ui.command"
