@@ -6,7 +6,7 @@ author: Kylan1940
 depend: 
 - EconomyAPI
 - PurePerms
-
+ 
 commands:
   heal:
     description: "Added max player health"
