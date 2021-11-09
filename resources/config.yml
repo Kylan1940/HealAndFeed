@@ -1,0 +1,24 @@
+# HEAL AND FEED CONFIGURATION
+#
+# HELP:
+# \n for new line
+# § for color and special symbols
+#
+# Command:
+no-permission: "§cYou don't have §aHeal Command §4permission"
+#
+# Message:
+message-heal: "§aYou've been healed"
+message-feed: "§aYou're full"
+not-enough-money-heal: "§cYour money is not enough"
+not-enough-money-feed: "§cYour money is not enough"
+#
+# UI
+title: "§aHeal§7And§cFeed"
+button-heal: "§aHeal"
+button-feed: "§cFeed"
+#
+# MONEY
+# Please write "0" if you don't want to pay for heal and feed, write money pay if you want to pay for heal and feed
+money-heal: "0"
+money-feed: "0"
