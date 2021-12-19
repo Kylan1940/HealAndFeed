@@ -1,22 +1,21 @@
 name: HealAndFeed
-version: 1.1.0
+version: 2.0.0
 main: Kylan1940\HealAndFeed\Main
-api: 3.0.0
+api: 4.0.0
 author: Kylan1940
-depend: 
-- EconomyAPI
-- PurePerms
- 
+
 commands:
   heal:
     description: "Added max player health"
-    usage: /heal
     permission: "healandfeed-heal.command"
   feed:
     description: "Restore hunger player and hunger saturation player"
-    usage: /feed
     permission: "healandfeed-feed.command"
-  healfeed:
-    description: "Heal and Feed UI Command"
-    usage: /healfeed
-    permission: "healandfeed-ui.command"
+    
+permissions:
+  healandfeed-heal.command:
+    description: "Permission for heal command"
+    default: op
+  healandfeed-feed.command:
+    description: "Permission for feed command"
+    default: op
