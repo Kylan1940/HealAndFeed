@@ -9,6 +9,7 @@ use pocketmine\plugin\PluginBase;
 use pocketmine\command\Command;
 use pocketmine\command\CommandSender;
 use pocketmine\event\Listener;
+use Kylan1940\HealAndFeed\Form\{Form, FormAPI, SimpleForm};
 
 class Main extends PluginBase implements Listener{
 	
@@ -30,9 +31,37 @@ class Main extends PluginBase implements Listener{
                        $sender->getHungerManager()->setSaturation(20);
                        $sender->sendMessage($this->getConfig()->get("message-feed"));
               }
+             if($cmd->getName() == "healfeed"){
+                $this->HealFeed($sender);
+              }
            } else {
                $sender->sendMessage("§cYou must be in-game to use this command!");
            }
           return true;
 		}
+		
+  public function HealFeed($sender){
+        $form = new SimpleForm(function (Player $sender, int $data = null){
+            $result = $data;
+            if ($result === null) {
+                return true;
+            }
+            switch ($result) {
+                case 0:
+                    $sender->setHealth($sender->getMaxHealth());
+                    $sender->sendMessage($this->getConfig()->get("message-heal"));
+                  break;
+                case 1:
+                    $sender->setFood(20);
+                    $sender->setSaturation(20);
+                    $sender->sendMessage($this->getConfig()->get("message-feed"));
+                  break;
+            }
+        });
+            $form->setTitle($this->getConfig()->get("title"));
+            $form->addButton($this->getConfig()->get("button-heal"));
+            $form->addButton($this->getConfig()->get("button-feed"));
+            $form->sendToPlayer($sender);
+            return $form;
+    }
 }

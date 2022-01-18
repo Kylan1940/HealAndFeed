@@ -1,5 +1,5 @@
 name: HealAndFeed
-version: 2.0.0
+version: 2.1.0
 main: Kylan1940\HealAndFeed\Main
 api: 4.0.0
 author: Kylan1940
@@ -11,6 +11,9 @@ commands:
   feed:
     description: "Restore hunger player and hunger saturation player"
     permission: "healandfeed-feed.command"
+  healfeed:
+    description: "HealAndFeedUI"
+    permission: "healandfeed-ui.command"
     
 permissions:
   healandfeed-heal.command:
@@ -18,4 +21,7 @@ permissions:
     default: op
   healandfeed-feed.command:
     description: "Permission for feed command"
+    default: op
+  healandfeed-ui.command:
+    description: "Permission for HealAndFeed UI command"
     default: op

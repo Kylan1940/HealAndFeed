@@ -7,3 +7,8 @@
 # Message:
 message-heal: "§aYou've been healed"
 message-feed: "§aYou're full"
+#
+# UI:
+title: "§aHeal§7And§9Feed"
+button-heal: "§aHeal"
+button-feed: "§9Feed"
