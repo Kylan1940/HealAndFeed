@@ -4,12 +4,16 @@ declare(strict_types=1);
 
 namespace Kylan1940\HealAndFeed;
 
-use pocketmine\player\Player;
+use pocketmine\Server;
+use pocketmine\Player;
+use pocketmine\plugin\Plugin;
 use pocketmine\plugin\PluginBase;
+use pocketmine\event\Listener;
 use pocketmine\command\Command;
 use pocketmine\command\CommandSender;
-use pocketmine\event\Listener;
-use Kylan1940\HealAndFeed\Form\{Form, SimpleForm};
+use pocketmine\command\ConsoleCommandSender;
+use pocketmine\utils\Config;
+use Kylan1940\HealAndFeed\Form\{Form, FormAPI, SimpleForm};
 
 class Main extends PluginBase implements Listener {
 	
