@@ -16,7 +16,7 @@ use Kylan1940\HealAndFeed\Form\{Form, SimpleForm};
 
 class Main extends PluginBase implements Listener {
 
-   public function onEnable() {
+   public function onEnable() : void {
         @mkdir($this->getDataFolder());
         $this->saveResource("config.yml");
    }
