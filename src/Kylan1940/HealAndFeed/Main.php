@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 namespace Kylan1940\HealAndFeed;
 
 use pocketmine\Server;
@@ -11,7 +9,6 @@ use pocketmine\plugin\PluginBase;
 use pocketmine\event\Listener;
 use pocketmine\command\Command;
 use pocketmine\command\CommandSender;
-use pocketmine\command\ConsoleCommandSender;
 use pocketmine\utils\Config;
 use Kylan1940\HealAndFeed\Form\{Form, SimpleForm};
 
