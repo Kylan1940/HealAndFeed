@@ -93,7 +93,7 @@ class Main extends PluginBase implements Listener {
                     if($money >= $moneyfeed){
                     $economy->reduceMoney($sender, $moneyfeed);
                     $sender->getHungerManager()->setFood(20);
-                    $sender->getHungerManager()->setSaturation(20)
+                    $sender->getHungerManager()->setSaturation(20);
                     $sender->sendMessage($this->getConfig()->get("message-feed"));
                   } else {
                     $sender->sendMessage($this->getConfig()->get("not-enough-money-feed"));
