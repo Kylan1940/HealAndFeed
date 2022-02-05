@@ -3,6 +3,9 @@ version: 2.1.0
 main: Kylan1940\HealAndFeed\Main
 api: 4.0.0
 author: Kylan1940
+defend:
+- PurePerms
+- EconomyAPI
 
 commands:
   heal:
