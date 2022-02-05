@@ -13,7 +13,7 @@ use pocketmine\command\Command;
 use pocketmine\command\CommandSender;
 use pocketmine\command\ConsoleCommandSender;
 use pocketmine\utils\Config;
-use Kylan1940\HealAndFeed\Form\{Form, FormAPI, SimpleForm};
+use Kylan1940\HealAndFeed\Form\{Form, SimpleForm};
 
 class Main extends PluginBase implements Listener {
 	
