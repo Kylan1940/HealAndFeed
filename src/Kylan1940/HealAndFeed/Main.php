@@ -2,21 +2,17 @@
 
 namespace Kylan1940\HealAndFeed;
 
-use pocketmine\Server;
-use pocketmine\Player;
-use pocketmine\plugin\Plugin;
+use pocketmine\player\Player;
 use pocketmine\plugin\PluginBase;
-use pocketmine\event\Listener;
 use pocketmine\command\Command;
 use pocketmine\command\CommandSender;
-use pocketmine\command\ConsoleCommandSender;
-use pocketmine\utils\Config;
+use pocketmine\event\Listener;
 use onebone\economyapi\EconomyAPI;
 use Kylan1940\HealAndFeed\Form\{Form, SimpleForm};
 
 class Main extends PluginBase implements Listener {
 
-   public function onEnable() {
+   public function onEnable() : void {
         @mkdir($this->getDataFolder());
         $this->saveResource("config.yml");
    }
@@ -27,7 +23,6 @@ class Main extends PluginBase implements Listener {
           $moneyheal = ($this->getConfig()->get("money-heal"));
           $moneyfeed = ($this->getConfig()->get("money-feed"));
           $money = $economy->myMoney($sender);
-            if($sender->hasPermission("healandfeed-heal.command")){
                 if($cmd->getName() == "heal"){
                   if($money >= $moneyheal){
                     $economy->reduceMoney($sender, $moneyheal);
@@ -36,11 +31,7 @@ class Main extends PluginBase implements Listener {
                   } else {
                     $sender->sendMessage($this->getConfig()->get("not-enough-money-heal"));
                   }
-                } 
-            } else {
-              $sender->sendMessage($this->getConfig()->get("no-permission-heal"));
-            }
-            if($sender->hasPermission("healandfeed-feed.command")){
+                }
                 if($cmd->getName() == "feed"){
                   if($money >= $moneyfeed){
                     $economy->reduceMoney($sender, $moneyfeed);
@@ -51,16 +42,9 @@ class Main extends PluginBase implements Listener {
                     $sender->sendMessage($this->getConfig()->get("not-enough-money-feed"));
                   }
                 } 
-            } else {
-              $sender->sendMessage($this->getConfig()->get("no-permission-feed"));
-            }
-            if($sender->hasPermission("healandfeed-ui.command")){
               if($cmd->getName() == "healfeed"){
                 $this->HealFeed($sender);
               } 
-            } else {
-              $sender->sendMessage($this->getConfig()->get("no-permission-ui"));
-            }
         } else {
           $sender->sendMessage($this->getConfig()->get("only-ingame"));
         }
