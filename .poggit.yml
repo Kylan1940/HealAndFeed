@@ -6,4 +6,6 @@ projects:
   HealAndFeed:
     path: ""
     icon: "icon.png"
+    libs:
+    - src: https://poggit.pmmp.io/ci/supercrafter333/libPiggyEconomy/libPiggyEconomy
 ...

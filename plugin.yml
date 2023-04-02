@@ -1,15 +1,17 @@
 name: HealAndFeed
-version: 2.1.0
+version: 2.2.0
 main: Kylan1940\HealAndFeed\Main
 api: 4.0.0
 author: Kylan1940
-defend:
+depend:
 - PurePerms
+softdepend:
 - EconomyAPI
+- BedrockEconomy
 
 commands:
   heal:
-    description: "Added max player health"
+    description: "Add max player health"
     permission: "healandfeed-heal.command"
   feed:
     description: "Restore hunger player and hunger saturation player"
