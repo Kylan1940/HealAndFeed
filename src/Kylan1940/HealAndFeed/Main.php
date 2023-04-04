@@ -7,44 +7,60 @@ use pocketmine\plugin\PluginBase;
 use pocketmine\command\Command;
 use pocketmine\command\CommandSender;
 use pocketmine\event\Listener;
+use pocketmine\utils\TextFormat;
 use Kylan1940\HealAndFeed\Form\{Form, SimpleForm};
+use Kylan1940\HealAndFeed\libs\libEco\libEco;
 
 class Main extends PluginBase implements Listener {
   
   public function onEnable() : void {
-        @mkdir($this->getDataFolder());
-        $this->saveResource("config.yml");
-       
+        $this->getServer()->getPluginManager()->registerEvents($this, $this);
+        $this->saveDefaultConfig();
+        $this->getResource("config.yml");
+        
+        // Check libEco
+        $libEco = new libEco();
+        if (!$libEco->isInstall()) {
+          $this->getLogger()->notice('You need to download an economy plugin like: EconomyAPI or BedrockEconomy to use it!');
+	       	$this->getServer()->getPluginManager()->disablePlugin($this);
+        }
+        
+        // Check config
+        if($this->getConfig()->get("config-ver") != 2)
+        {
+            $this->getLogger()->info("HealAndFeed's config is NOT up to date. Please delete the config.yml and restart the server or the plugin may not work properly.");
+        }
   }
    
   public function onCommand(CommandSender $sender, Command $cmd, string $label, array $args) : bool{
         if($sender instanceof Player){
-          //$economy = $this->getServer()->getPluginManager()->getPlugin("BedrockEconomy");
-          //$moneyheal = ($this->getConfig()->get("money-heal"));
-          //$moneyfeed = ($this->getConfig()->get("money-feed"));
-          //$money = $economy->myMoney($sender);
+          $libEco = new libEco();
+          $heal = $this->getConfig()->get("money-heal");
+          $feed = $this->getConfig()->get("money-feed");
                 if($cmd->getName() == "heal"){
-                  //if($money >= $moneyheal){
-                    //$economy->reduceMoney($sender, $moneyheal);
+                  if ($sender -> hasPermission("healandfeed-heal.command")) {
                     $sender->setHealth($sender->getMaxHealth());
-                    $sender->sendMessage($this->getConfig()->get("message-heal"));
-                  //} else {
-                    //$sender->sendMessage($this->getConfig()->get("not-enough-money-heal"));
-                  //}
+                    $sender->sendMessage($this->getConfig()->get("message-heal")); 
+                  } else {
+                    $sender->sendMessage($this->getConfig()->get("no-permission-heal"));
+                  }
                 }
                 if($cmd->getName() == "feed"){
-                  //if($money >= $moneyfeed){
-                    //$economy->reduceMoney($sender, $moneyfeed);
+                  if ($sender -> hasPermission("healandfeed-feed.command")) {
                     $sender->getHungerManager()->setFood(20);
                     $sender->getHungerManager()->setSaturation(20);
-                    $sender->sendMessage($this->getConfig()->get("message-feed"));
-                  //} else {
-                    //$sender->sendMessage($this->getConfig()->get("not-enough-money-feed"));
-                  //}
+                    $sender->sendMessage($this->getConfig()->get("message-feed")); 
+                  } else {
+                    $sender->sendMessage($this->getConfig()->get("no-permission-feed"));
+                  }
                 } 
-              if($cmd->getName() == "healfeed"){
-                $this->HealFeed($sender);
-              } 
+                if($cmd->getName() == "healfeed"){
+                  if ($sender -> hasPermission("healandfeed-ui.command")) {
+                    $this->HealFeed($sender);
+                  } else {
+                    $sender->sendMessage($this->getConfig()->get("no-permission-ui"));
+                  }
+                } 
         } else {
           $sender->sendMessage($this->getConfig()->get("only-ingame"));
         }
@@ -59,29 +75,21 @@ class Main extends PluginBase implements Listener {
             }
             switch ($result) {
                 case 0:
-                  //$economy = $this->getServer()->getPluginManager()->getPlugin("EconomyAPI");
-                  //$money = $economy->myMoney($sender); 
-                  //$moneyheal = ($this->getConfig()->get("money-heal"));
-                  //if($money >= $moneyheal){
-                    //$economy->reduceMoney($sender, $moneyheal);
-                    $sender->setHealth($sender->getMaxHealth());
-                    $sender->sendMessage($this->getConfig()->get("message-heal"));
-                  //} else {
-                    //$sender->sendMessage($this->getConfig()->get("not-enough-money-heal"));
-                  //}
+                    if ($sender -> hasPermission("healandfeed-heal.command")) {
+                      $sender->setHealth($sender->getMaxHealth());
+                      $sender->sendMessage($this->getConfig()->get("message-heal")); 
+                    } else {
+                      $sender->sendMessage($this->getConfig()->get("no-permission-heal"));
+                    }
                   break;
                 case 1:
-                  //$economy = $this->getServer()->getPluginManager()->getPlugin("EconomyAPI");
-                  //$money = $economy->myMoney($sender);
-                  //$moneyfeed = ($this->getConfig()->get("money-feed"));
-                    //if($money >= $moneyfeed){
-                    //$economy->reduceMoney($sender, $moneyfeed);
-                    $sender->getHungerManager()->setFood(20);
-                    $sender->getHungerManager()->setSaturation(20);
-                    $sender->sendMessage($this->getConfig()->get("message-feed"));
-                  //} else {
-                    //$sender->sendMessage($this->getConfig()->get("not-enough-money-feed"));
-                  //}
+                    if ($sender -> hasPermission("healandfeed-feed.command")) {
+                      $sender->getHungerManager()->setFood(20);
+                      $sender->getHungerManager()->setSaturation(20);
+                      $sender->sendMessage($this->getConfig()->get("message-feed")); 
+                    } else {
+                      $sender->sendMessage($this->getConfig()->get("no-permission-feed"));
+                    }
                   break;
             }
         });
@@ -93,3 +101,48 @@ class Main extends PluginBase implements Listener {
     }
 
 }
+
+/*
+if ($command->getName() === "rename") 
+        {
+            if (!$sender instanceof Player) 
+            {
+                $sender->sendMessage("Please Use This Command In-Game!");
+            }
+            if (!$sender->hasPermission("economyrename.use")) 
+            {
+                $sender->sendMessage($this->getConfig()->get("no-permission"));
+            }
+            if (!isset($args[0]))
+            {
+                $sender->sendMessage($this->getConfig()->get("usage"));
+            }
+            
+            if (isset($args[0])) 
+            {
+                $price = $this->getConfig()->get("rename-price");
+				libEco::reduceMoney($sender, $price, static function(bool $success) use ($sender, $price): void {
+                    if($success){
+						if (is_null($sender)){
+                             libEco::addMoney($sender, $price);
+						} else{
+							$name = $args[0];
+							$item = $sender->getInventory()->getItemInHand();
+							$item->setCustomName($name);
+							$sender->getInventory()->setItemInHand($item);
+							libEco::myMoney($player, static function(float $money) use($sender) : void {
+							$sender->sendMessage($this->getMessage("rename-success", ["{name}", "{cost}"], [$sender->getName(), $money]));
+								});
+                        }
+                    } elseif(!is_null($sender)){
+						$name = $sender->getName();
+						libEco::myMoney($sender, static function(float $money) use($sender) : void {
+						$sender->sendMessage($this->getMessage("no-money", ["{name}", "{cost}"], [$name, $money]));
+							});
+					}
+                });
+                return true;
+            }
+        }
+        return false;
+    }
