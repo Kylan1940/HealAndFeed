@@ -62,7 +62,7 @@ class Main extends PluginBase implements Listener {
         return true;
     }
     
-  public function HealFeed($sender){
+  public function HealFeed($sender): void{
       BedrockEconomyAPI::legacy()->getPlayerBalance(
 			$player->getName(),
 			ClosureContext::create(
@@ -70,7 +70,7 @@ class Main extends PluginBase implements Listener {
 				  $form = new SimpleForm(function (Player $sender, int $data = null){
             $result = $data;
             if ($result === null) {
-                return true;
+                return;
             }
             switch ($result) {
                 case 0:
@@ -104,7 +104,6 @@ class Main extends PluginBase implements Listener {
 				},
 			)
 		);
-		return true;
     }
 
 }
