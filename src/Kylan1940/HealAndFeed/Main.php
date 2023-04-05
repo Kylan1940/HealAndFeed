@@ -8,8 +8,9 @@ use pocketmine\command\Command;
 use pocketmine\command\CommandSender;
 use pocketmine\event\Listener;
 use pocketmine\utils\TextFormat;
+cooldogedev\BedrockEconomy\api\BedrockEconomyAPI;
+use cooldogedev\BedrockEconomy\libs\cooldogedev\libSQL\context\ClosureContext;
 use Kylan1940\HealAndFeed\Form\{Form, SimpleForm};
-use Kylan1940\HealAndFeed\libs\libEco\libEco;
 
 class Main extends PluginBase implements Listener {
   
@@ -17,13 +18,6 @@ class Main extends PluginBase implements Listener {
         $this->getServer()->getPluginManager()->registerEvents($this, $this);
         $this->saveDefaultConfig();
         $this->getResource("config.yml");
-        
-        // Check libEco
-        $libEco = new libEco();
-        if (!$libEco->isInstall()) {
-          $this->getLogger()->notice('You need to download an economy plugin like: EconomyAPI or BedrockEconomy to use it!');
-	       	$this->getServer()->getPluginManager()->disablePlugin($this);
-        }
         
         // Check config
         if($this->getConfig()->get("config-ver") != 2)
@@ -34,12 +28,12 @@ class Main extends PluginBase implements Listener {
    
   public function onCommand(CommandSender $sender, Command $cmd, string $label, array $args) : bool{
         if($sender instanceof Player){
-          $libEco = new libEco();
           $heal = $this->getConfig()->get("money-heal");
           $feed = $this->getConfig()->get("money-feed");
                 if($cmd->getName() == "heal"){
                   if ($sender -> hasPermission("healandfeed-heal.command")) {
                     $sender->setHealth($sender->getMaxHealth());
+                    BedrockEconomyAPI::legacy()->subtractFromPlayerBalance($player->getName(), (int) $heal);
                     $sender->sendMessage($this->getConfig()->get("message-heal")); 
                   } else {
                     $sender->sendMessage($this->getConfig()->get("no-permission-heal"));
@@ -49,6 +43,7 @@ class Main extends PluginBase implements Listener {
                   if ($sender -> hasPermission("healandfeed-feed.command")) {
                     $sender->getHungerManager()->setFood(20);
                     $sender->getHungerManager()->setSaturation(20);
+                    BedrockEconomyAPI::legacy()->subtractFromPlayerBalance($player->getName(), (int) $feed);
                     $sender->sendMessage($this->getConfig()->get("message-feed")); 
                   } else {
                     $sender->sendMessage($this->getConfig()->get("no-permission-feed"));
@@ -68,24 +63,32 @@ class Main extends PluginBase implements Listener {
     }
     
   public function HealFeed($sender){
-        $form = new SimpleForm(function (Player $sender, int $data = null){
+      BedrockEconomyAPI::legacy()->getPlayerBalance(
+			$player->getName(),
+			ClosureContext::create(
+				function (?int $balance) use ($player): void {
+				  $form = new SimpleForm(function (Player $sender, int $data = null){
             $result = $data;
             if ($result === null) {
                 return true;
             }
             switch ($result) {
                 case 0:
+                  $heal = $this->getConfig()->get("money-heal");
                     if ($sender -> hasPermission("healandfeed-heal.command")) {
                       $sender->setHealth($sender->getMaxHealth());
+                      BedrockEconomyAPI::legacy()->subtractFromPlayerBalance($player->getName(), (int) $heal);
                       $sender->sendMessage($this->getConfig()->get("message-heal")); 
                     } else {
                       $sender->sendMessage($this->getConfig()->get("no-permission-heal"));
                     }
                   break;
                 case 1:
+                  $feed = $this->getConfig()->get("money-feed");
                     if ($sender -> hasPermission("healandfeed-feed.command")) {
                       $sender->getHungerManager()->setFood(20);
                       $sender->getHungerManager()->setSaturation(20);
+                      BedrockEconomyAPI::legacy()->subtractFromPlayerBalance($player->getName(), (int) $feed);
                       $sender->sendMessage($this->getConfig()->get("message-feed")); 
                     } else {
                       $sender->sendMessage($this->getConfig()->get("no-permission-feed"));
@@ -98,6 +101,9 @@ class Main extends PluginBase implements Listener {
             $form->addButton($this->getConfig()->get("button-feed"));
             $form->sendToPlayer($sender);
             return $form;
+				},
+			)
+		);
     }
 
 }
