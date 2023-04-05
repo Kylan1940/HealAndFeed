@@ -33,7 +33,7 @@ class Main extends PluginBase implements Listener {
                 if($cmd->getName() == "heal"){
                   if ($sender -> hasPermission("healandfeed-heal.command")) {
                     $sender->setHealth($sender->getMaxHealth());
-                    BedrockEconomyAPI::legacy()->subtractFromPlayerBalance($player->getName(), (int) $heal);
+                    BedrockEconomyAPI::legacy()->subtractFromPlayerBalance($sender->getName(), (int) $heal);
                     $sender->sendMessage($this->getConfig()->get("message-heal")); 
                   } else {
                     $sender->sendMessage($this->getConfig()->get("no-permission-heal"));
@@ -43,7 +43,7 @@ class Main extends PluginBase implements Listener {
                   if ($sender -> hasPermission("healandfeed-feed.command")) {
                     $sender->getHungerManager()->setFood(20);
                     $sender->getHungerManager()->setSaturation(20);
-                    BedrockEconomyAPI::legacy()->subtractFromPlayerBalance($player->getName(), (int) $feed);
+                    BedrockEconomyAPI::legacy()->subtractFromPlayerBalance($sender->getName(), (int) $feed);
                     $sender->sendMessage($this->getConfig()->get("message-feed")); 
                   } else {
                     $sender->sendMessage($this->getConfig()->get("no-permission-feed"));
@@ -64,9 +64,9 @@ class Main extends PluginBase implements Listener {
     
   public function HealFeed($sender){
       BedrockEconomyAPI::legacy()->getPlayerBalance(
-			$player->getName(),
+			$sender->getName(),
 			ClosureContext::create(
-				function (?int $balance) use ($player): void {
+				function (?int $balance) use ($sender): void {
 				  $form = new SimpleForm(function (Player $sender, int $data = null){
             $result = $data;
             if ($result === null) {
@@ -77,7 +77,7 @@ class Main extends PluginBase implements Listener {
                   $heal = $this->getConfig()->get("money-heal");
                     if ($sender -> hasPermission("healandfeed-heal.command")) {
                       $sender->setHealth($sender->getMaxHealth());
-                      BedrockEconomyAPI::legacy()->subtractFromPlayerBalance($player->getName(), (int) $heal);
+                      BedrockEconomyAPI::legacy()->subtractFromPlayerBalance($sender->getName(), (int) $heal);
                       $sender->sendMessage($this->getConfig()->get("message-heal")); 
                     } else {
                       $sender->sendMessage($this->getConfig()->get("no-permission-heal"));
@@ -88,7 +88,7 @@ class Main extends PluginBase implements Listener {
                     if ($sender -> hasPermission("healandfeed-feed.command")) {
                       $sender->getHungerManager()->setFood(20);
                       $sender->getHungerManager()->setSaturation(20);
-                      BedrockEconomyAPI::legacy()->subtractFromPlayerBalance($player->getName(), (int) $feed);
+                      BedrockEconomyAPI::legacy()->subtractFromPlayerBalance($sender->getName(), (int) $feed);
                       $sender->sendMessage($this->getConfig()->get("message-feed")); 
                     } else {
                       $sender->sendMessage($this->getConfig()->get("no-permission-feed"));
