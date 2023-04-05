@@ -1,12 +1,11 @@
 name: HealAndFeed
-version: 2.2.0
+version: 2.3.0
 main: Kylan1940\HealAndFeed\Main
 api: 4.0.0
 author: Kylan1940
 depend:
 - PurePerms
 softdepend:
-- EconomyAPI
 - BedrockEconomy
 
 commands:

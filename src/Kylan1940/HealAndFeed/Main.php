@@ -8,7 +8,7 @@ use pocketmine\command\Command;
 use pocketmine\command\CommandSender;
 use pocketmine\event\Listener;
 use pocketmine\utils\TextFormat;
-cooldogedev\BedrockEconomy\api\BedrockEconomyAPI;
+use cooldogedev\BedrockEconomy\api\BedrockEconomyAPI;
 use cooldogedev\BedrockEconomy\libs\cooldogedev\libSQL\context\ClosureContext;
 use Kylan1940\HealAndFeed\Form\{Form, SimpleForm};
 
