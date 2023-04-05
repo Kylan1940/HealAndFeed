@@ -62,7 +62,7 @@ class Main extends PluginBase implements Listener {
         return true;
     }
     
-  public function HealFeed($sender): void{
+  public function HealFeed($sender){
       BedrockEconomyAPI::legacy()->getPlayerBalance(
 			$player->getName(),
 			ClosureContext::create(
@@ -100,7 +100,6 @@ class Main extends PluginBase implements Listener {
             $form->addButton($this->getConfig()->get("button-heal"));
             $form->addButton($this->getConfig()->get("button-feed"));
             $form->sendToPlayer($sender);
-            return $form;
 				},
 			)
 		);
