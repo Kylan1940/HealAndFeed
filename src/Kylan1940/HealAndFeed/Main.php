@@ -25,8 +25,6 @@ class Main extends PluginBase implements Listener {
    
   public function onCommand(CommandSender $sender, Command $cmd, string $label, array $args) : bool{
         if($sender instanceof Player){
-          $heal = $this->getConfig()->get("money-heal");
-          $feed = $this->getConfig()->get("money-feed");
                 if($cmd->getName() == "heal"){
                   if ($sender -> hasPermission("healandfeed-heal.command")) {
                     $sender->setHealth($sender->getMaxHealth());
