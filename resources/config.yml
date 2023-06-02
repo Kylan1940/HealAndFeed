@@ -3,18 +3,16 @@
 # HELP:
 # \n for new line
 # § for color and special symbols
-
+#
+# Version:
+# DON'T CHANGE THIS!!! 
+config-ver: 3
+#
 # Command:
 no-permission-heal: "§cYou don't have §aHeal Command §cpermission"
 no-permission-feed: "§cYou don't have §aFeed Command §cpermission"
-no-permission-ui: "§cYou don't have §aHealAndFeed UI Command §cpermission"
 only-ingame: "This command is only in game!"
-
+#
 # Message:
 message-heal: "§aYou've been healed"
 message-feed: "§aYou're full"
-
-# UI
-title: "§aHeal§7And§cFeed"
-button-heal: "§aHeal"
-button-feed: "§cFeed"

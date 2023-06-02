@@ -2,14 +2,15 @@
 # Description
 Heal and Feed Command For PocketMine-MP. If you are have a question, please make a [issues](https://github.com/Kylan1940/HealAndFeed/issues/new)
 
-# Changelogs [2.2.0]
->- Removed Pay for heal and feed
+# Changelogs [3.0.0]
+>- Support PM5
+>- Removed HealAndFeed UI
 
 # Features
 >- Simple
 >- Configuration
 >- Can heal and feed other player
->- With UI
+>- With UI (soon)
 >- Pay for heal and feed (soon)
 >- Console Support (soon)
 >- Minimum Health or Hungry to use commands (soon)
@@ -31,7 +32,6 @@ Heal and Feed Command For PocketMine-MP. If you are have a question, please make
 # Permission
 | Command | Permission | Default |
 |---|---|---|
-| /healfeed | healandfeed-ui.command | OP | 
 | /heal | healandfeed-heal.command | OP |
 | /heal (PlayerName) | healandfeed-heal.command | OP |
 | /feed | healandfeed-feed.command | OP | 

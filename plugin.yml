@@ -1,12 +1,8 @@
 name: HealAndFeed
-version: 2.3.0
+version: 3.0.0
 main: Kylan1940\HealAndFeed\Main
-api: 4.0.0
+api: 5.0.0
 author: Kylan1940
-depend:
-- PurePerms
-softdepend:
-- BedrockEconomy
 
 commands:
   heal:
@@ -15,9 +11,6 @@ commands:
   feed:
     description: "Restore hunger player and hunger saturation player"
     permission: "healandfeed-feed.command"
-  healfeed:
-    description: "HealAndFeedUI"
-    permission: "healandfeed-ui.command"
     
 permissions:
   healandfeed-heal.command:
@@ -25,7 +18,4 @@ permissions:
     default: op
   healandfeed-feed.command:
     description: "Permission for feed command"
-    default: op
-  healandfeed-ui.command:
-    description: "Permission for HealAndFeed UI command"
     default: op
