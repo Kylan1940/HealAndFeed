@@ -2,6 +2,9 @@
 # Description
 Heal and Feed Command For PocketMine-MP. If you are have a question, please make a [issues](https://github.com/Kylan1940/HealAndFeed/issues/new)
 
+# WARNING
+**THIS BRANCH IS PM5 PLUGIN TESTING, OFFICIALY BRANCH YOU CAN CHECK [HERE](https://github.com/Kylan1940/HealAndFeed/main)**
+
 # Changelogs [2.2.0]
 >- Removed Pay for heal and feed
 
