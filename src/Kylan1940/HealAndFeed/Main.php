@@ -13,10 +13,27 @@ use Kylan1940\HealAndFeed\Form\{Form, SimpleForm};
 
 class Main extends PluginBase implements Listener {
   
+  /** @var float */
+  const CONFIG_VERSION = 4;
+  
   public function onEnable() : void {
+        $this->updateConfig();
         $this->getServer()->getPluginManager()->registerEvents($this, $this);
         $this->saveDefaultConfig();
         $this->getResource("config.yml");
+  }
+  
+  private function updateConfig(){
+        if (!file_exists($this->getDataFolder() . 'config.yml')) {
+            $this->saveResource('config.yml');
+            return;
+        }
+        if ($this->getConfig()->get('config-version') !== self::CONFIG_VERSION) {
+            $config_version = $this->getConfig()->get('config-version');
+            $this->getLogger()->info("Your Config isn't the latest. We renamed your old config to §bconfig-" . $config_version . ".yml §6and created a new config");
+            rename($this->getDataFolder() . 'config.yml', $this->getDataFolder() . 'config-' . $config_version . '.yml');
+            $this->saveResource('config.yml');
+        }
   }
    
   public function onCommand(CommandSender $sender, Command $cmd, string $label, array $args) : bool{
@@ -29,8 +46,7 @@ class Main extends PluginBase implements Listener {
                            $player->setHealth($player->getMaxHealth());
                            $player->sendMessage($this->getConfig()->get("message-heal"));  
                        } else {
-                           //$sender->sendMessage($this->getConfig()->get("no-player-found"));
-                           $sender->sendMessage("§cThis player does not exist");
+                           $sender->sendMessage($this->getConfig()->get("no-player-found"));
                        }
                    } else {
                        $sender->setHealth($sender->getMaxHealth());
@@ -49,8 +65,7 @@ class Main extends PluginBase implements Listener {
                            $player->getHungerManager()->setSaturation(20);
                            $player->sendMessage($this->getConfig()->get("message-heal"));  
                        } else {
-                           //$sender->sendMessage($this->getConfig()->get("no-player-found"));
-                           $sender->sendMessage("§cThis player does not exist");
+                           $sender->sendMessage($this->getConfig()->get("no-player-found"));
                        }
                    } else {
                        $sender->getHungerManager()->setFood(20);
@@ -73,12 +88,10 @@ class Main extends PluginBase implements Listener {
                            $player->setHealth($player->getMaxHealth());
                            $player->sendMessage($this->getConfig()->get("message-heal"));  
                        } else {
-                           //$sender->sendMessage($this->getConfig()->get("no-player-found"));
-                           $sender->sendMessage("§cThis player does not exist");
+                           $sender->sendMessage($this->getConfig()->get("no-player-found"));
                        }
                    } else {
-                       //$sender->sendMessage($this->getConfig()->get("console-command-heal"));  
-                       $sender->sendMessage("§c/heal is heal for playerself and only in-game, for console you must /heal (playerOnline)"); 
+                       $sender->sendMessage($this->getConfig()->get("console-command-heal"));  
                    }
                 }
                 if($cmd->getName() == "feed"){
@@ -89,17 +102,14 @@ class Main extends PluginBase implements Listener {
                            $player->getHungerManager()->setSaturation(20);
                            $player->sendMessage($this->getConfig()->get("message-heal"));  
                        } else {
-                           //$sender->sendMessage($this->getConfig()->get("no-player-found"));
-                           $sender->sendMessage("§cThis player does not exist");
+                           $sender->sendMessage($this->getConfig()->get("no-player-found"));
                        }
                    } else {
-                       //$sender->sendMessage($this->getConfig()->get("console-command-feed"));  
-                       $sender->sendMessage("§c/feed is heal for playerself and only in-game, for console you must /feed (playerOnline)");
+                       $sender->sendMessage($this->getConfig()->get("console-command-feed"));  
                    }
                 }
                 if($cmd->getName() == "healfeed"){
-                  //$sender->sendMessage($this->getConfig()->get("console-command-ui"));  
-                       $sender->sendMessage("§c/healfeed is only for in-game");
+                  $sender->sendMessage($this->getConfig()->get("console-command-ui"));  
                 } 
         } 
     return true;
@@ -131,12 +141,9 @@ class Main extends PluginBase implements Listener {
                   break;
             }
         });
-            //$form->setTitle($this->getConfig()->get("title"));
-            $form->setTitle("§aHeal§7And§cFeed");
-            //$form->addButton($this->getConfig()->get("button-heal"));
-            $form->addButton("§aHeal");
-            //$form->addButton($this->getConfig()->get("button-feed"));
-            $form->addButton("§cFeed");
+            $form->setTitle($this->getConfig()->get("title"));
+            $form->addButton($this->getConfig()->get("button-heal"));
+            $form->addButton($this->getConfig()->get("button-feed"));
             $form->sendToPlayer($sender);
             return $form;
     }
