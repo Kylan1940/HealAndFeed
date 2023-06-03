@@ -13,7 +13,6 @@ use Kylan1940\HealAndFeed\Form\{Form, SimpleForm};
 
 class Main extends PluginBase implements Listener {
   
-  /** @var float */
   const CONFIG_VERSION = 4;
   
   public function onEnable() : void {
