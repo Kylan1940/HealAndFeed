@@ -26,14 +26,14 @@ class Main extends PluginBase implements Listener {
                     if (isset($args[0])){
                        $player = $this->getServer()->getPlayerExact($args[0]);
                        if ($player){
-                           $player->setHealth($sender->getMaxHealth());
+                           $player->setHealth($player->getMaxHealth());
                            $player->sendMessage($this->getConfig()->get("message-heal"));  
                        } else {
                            //$sender->sendMessage($this->getConfig()->get("no-player-found"));
                            $sender->sendMessage("§cThis player does not exist");
                        }
                    } else {
-                       $sender->setHealth($player->getMaxHealth());
+                       $sender->setHealth($sender->getMaxHealth());
                        $sender->sendMessage($this->getConfig()->get("message-heal"));  
                    }
                   } else {
