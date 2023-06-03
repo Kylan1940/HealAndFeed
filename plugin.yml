@@ -1,5 +1,5 @@
 name: HealAndFeed
-version: 3.1.0
+version: 3.2.0
 main: Kylan1940\HealAndFeed\Main
 api: 5.0.0
 author: Kylan1940
@@ -8,9 +8,15 @@ commands:
   heal:
     description: "Add max player health"
     permission: "healandfeed-heal.command"
+  healall:
+    description: "Add max player health to all online player(s)"
+    permission: "healandfeed-healall.command"
   feed:
     description: "Restore hunger player and hunger saturation player"
     permission: "healandfeed-feed.command"
+  feedall:
+    description: "Restore hunger player and hunger saturation all online player(s)"
+    permission: "healandfeed-feedall.command"
   healfeed:
     description: "HealAndFeedUI"
     permission: "healandfeed-ui.command"
@@ -19,8 +25,14 @@ permissions:
   healandfeed-heal.command:
     description: "Permission for heal command"
     default: op
+  healandfeed-healall.command:
+    description: "Permission for heal all command"
+    default: op
   healandfeed-feed.command:
     description: "Permission for feed command"
+    default: op
+  healandfeed-feedall.command:
+    description: "Permission for feed all command"
     default: op
   healandfeed-ui.command:
     description: "Permission for HealAndFeed UI command"
