@@ -26,26 +26,32 @@
 config-version: "6" 
 
 # Command:
-no-permission-heal: "§cYou don't have §aHeal Command §cpermission"
-no-permission-feed: "§cYou don't have §aFeed Command §cpermission"
-no-permission-ui: "§cYou don't have §aHealAndFeed UI Command §cpermission"
-no-permission-healother: "§cYou don't have §aHeal Other Player Command §cpermission"
-no-permission-feedother: "§cYou don't have §aFeed Other Player Command §cpermission"
-no-permission-healall: "§cYou don't have §aHeal All Command §cpermission"
-no-permission-feedall: "§cYou don't have §aFeed All Command §cpermission"
-console-command-heal: "§c/heal is heal for playerself and only in-game, for console you must /heal (playerOnline)"
-console-command-feed: "§c/feed is feed for playerself and only in-game, for console you must /feed (playerOnline)"
-console-command-ui: "§c/healfeed is only in-game"
+no-permission:
+  heal: "§cYou don't have §aHeal Command §cpermission"
+  feed: "§cYou don't have §aFeed Command §cpermission"
+  ui: "§cYou don't have §aHealAndFeed UI Command §cpermission"
+  healother: "§cYou don't have §aHeal Other Player Command §cpermission"
+  feedother: "§cYou don't have §aFeed Other Player Command §cpermission"
+  healall: "§cYou don't have §aHeal All Command §cpermission"
+  feedall: "§cYou don't have §aFeed All Command §cpermission"
+console-command:
+  heal: "§c/heal is heal for playerself and only in-game, for console you must /heal (playerOnline)"
+  feed: "§c/feed is feed for playerself and only in-game, for console you must /feed (playerOnline)"
+  ui: "§c/healfeed is only in-game"
 
 # Message:
-message-heal: "§aYou've been healed"
-message-feed: "§aYou're full"
-message-healall: "§aHeal all players successfully"
-message-feedall: "§aFeed all players successfully"
-no-player-found: "§cThis player does not exist"
-no-player-online: "§cThere are no online players in server"
+message:
+  heal: "§aYou've been healed"
+  feed: "§aYou're full"
+  healall: "§aHeal all players successfully"
+  feedall: "§aFeed all players successfully"
+no-player:
+  found: "§cThis player does not exist"
+  online: "§cThere are no online players in server"
 
 # UI
-title: "§aHeal§7And§cFeed"
-button-heal: "§aHeal"
-button-feed: "§cFeed"
+ui:
+  title: "§aHeal§7And§cFeed"
+  button: 
+    heal: "§aHeal"
+    feed: "§cFeed"

@@ -33,12 +33,4 @@ Heal and Feed Command For PocketMine-MP. If you are have a question, please make
 3. Restart the server
 
 # Permission
-| Command | Permission | Default | Console Support |
-|---|---|---|---|
-| /healfeed | healandfeed-ui.command | OP | NO |
-| /heal | healandfeed-heal.command | OP | NO |
-| /heal (PlayerName) | healandfeed-healother.command | OP | YES |
-| /healall | healandfeed-healall.command | OP | YES |
-| /feed | healandfeed-feed.command | OP | NO |
-| /feed (PlayerName) | healandfeed-feedother.command | OP | YES |
-| /feedall | healandfeed-feedall.command | OP | YES |
+[See the wiki](https://github.com/Kylan1940/HealAndFeed/wiki/HealAndFeed-Commands) for all permissions
