@@ -13,7 +13,7 @@ use Kylan1940\HealAndFeed\Form\{Form, SimpleForm};
 
 class Main extends PluginBase implements Listener {
   
-  const CONFIG_VERSION = 5;
+  const CONFIG_VERSION = 6;
   
   public function onEnable() : void {
         $this->updateConfig();
@@ -40,12 +40,16 @@ class Main extends PluginBase implements Listener {
                 if($cmd->getName() == "heal"){
                   if ($sender -> hasPermission("healandfeed-heal.command")) {
                     if (isset($args[0])){
-                       $player = $this->getServer()->getPlayerExact($args[0]);
-                       if ($player){
+                       if ($sender -> hasPermission("healandfeed-healother.command")) {
+                         $player = $this->getServer()->getPlayerExact($args[0]);
+                         if ($player){
                            $player->setHealth($player->getMaxHealth());
                            $player->sendMessage($this->getConfig()->get("message-heal"));  
-                       } else {
+                         } else {
                            $sender->sendMessage($this->getConfig()->get("no-player-found"));
+                         }
+                       } else {
+                        $sender->sendMessage($this->getConfig()->get("no-permission-healother"));
                        }
                    } else {
                        $sender->setHealth($sender->getMaxHealth());
@@ -72,14 +76,18 @@ class Main extends PluginBase implements Listener {
                 if($cmd->getName() == "feed"){
                   if ($sender -> hasPermission("healandfeed-heal.command")) {
                     if (isset($args[0])){
-                       $player = $this->getServer()->getPlayerExact($args[0]);
-                       if ($player){
+                      if ($sender -> hasPermission("healandfeed-feedother.command")) {
+                        $player = $this->getServer()->getPlayerExact($args[0]);
+                        if ($player){
                            $player->getHungerManager()->setFood(20);
                            $player->getHungerManager()->setSaturation(20);
                            $player->sendMessage($this->getConfig()->get("message-heal"));  
-                       } else {
-                           $sender->sendMessage($this->getConfig()->get("no-player-found"));
-                       }
+                        } else {
+                         $sender->sendMessage($this->getConfig()->get("no-player-found"));
+                        } 
+                      } else {
+                        $sender->sendMessage($this->getConfig()->get("no-permission-feedother"));
+                      }
                    } else {
                        $sender->getHungerManager()->setFood(20);
                        $sender->getHungerManager()->setSaturation(20);
@@ -106,6 +114,8 @@ class Main extends PluginBase implements Listener {
                 }
                 if($cmd->getName() == "healfeed"){
                   $this->HealFeed($sender);
+                } else {
+                  $sender->sendMessage($this->getConfig()->get("no-permission-ui"));
                 }
         } 
         if(!$sender instanceof Player){
@@ -198,5 +208,4 @@ class Main extends PluginBase implements Listener {
             $form->sendToPlayer($sender);
             return $form;
     }
-
 }

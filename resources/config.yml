@@ -1,3 +1,20 @@
+# ===========================================================================
+# ██╗░░██╗██╗░░░██╗██╗░░░░░░█████╗░███╗░░██╗░░███╗░░░█████╗░░░██╗██╗░█████╗░
+# ██║░██╔╝╚██╗░██╔╝██║░░░░░██╔══██╗████╗░██║░████║░░██╔══██╗░██╔╝██║██╔══██╗
+# █████═╝░░╚████╔╝░██║░░░░░███████║██╔██╗██║██╔██║░░╚██████║██╔╝░██║██║░░██║
+# ██╔═██╗░░░╚██╔╝░░██║░░░░░██╔══██║██║╚████║╚═╝██║░░░╚═══██║███████║██║░░██║
+# ██║░╚██╗░░░██║░░░███████╗██║░░██║██║░╚███║███████╗░█████╔╝╚════██║╚█████╔╝
+# ╚═╝░░╚═╝░░░╚═╝░░░╚══════╝╚═╝░░╚═╝╚═╝░░╚══╝╚══════╝░╚════╝░░░░░░╚═╝░╚════╝░
+# ===========================================================================
+# Report Plugin: https://github.com/Kylan1940/HealAndFeed/issues/new
+# ===========================================================================
+# Website: https://web.kylan1940.online
+# Donate:
+# - https://trakteer.id/Kylan1940 (Indonesian)
+# - https://ko-fi.com/Kylan1940
+# ===========================================================================
+
+
 # HEAL AND FEED CONFIGURATION
 #
 # HELP:
@@ -6,12 +23,14 @@
 
 # Config Version
 # DON'T CHANGE THIS!!! 
-config-version: "5" 
+config-version: "6" 
 
 # Command:
 no-permission-heal: "§cYou don't have §aHeal Command §cpermission"
 no-permission-feed: "§cYou don't have §aFeed Command §cpermission"
 no-permission-ui: "§cYou don't have §aHealAndFeed UI Command §cpermission"
+no-permission-healother: "§cYou don't have §aHeal Other Player Command §cpermission"
+no-permission-feedother: "§cYou don't have §aFeed Other Player Command §cpermission"
 no-permission-healall: "§cYou don't have §aHeal All Command §cpermission"
 no-permission-feedall: "§cYou don't have §aFeed All Command §cpermission"
 console-command-heal: "§c/heal is heal for playerself and only in-game, for console you must /heal (playerOnline)"
