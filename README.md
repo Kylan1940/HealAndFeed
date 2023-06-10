@@ -13,7 +13,6 @@ Heal and Feed Command For PocketMine-MP. If you are have a question, please make
 >- With UI 
 >- Console Support
 >- Pay for heal and feed (soon)
->- Minimum Health or Hungry to use commands (soon)
 
 # Download
 | Version | Phar | Support |

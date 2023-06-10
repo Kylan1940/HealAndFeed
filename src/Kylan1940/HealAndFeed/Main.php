@@ -51,7 +51,8 @@ class Main extends PluginBase implements Listener {
                        } else {
                         $sender->sendMessage($this->getConfig()->getNested('no-permission.healother'));
                        }
-                   } else {
+                   } 
+                   if (!isset($args[0])){
                        $sender->setHealth($sender->getMaxHealth());
                        $sender->sendMessage($this->getConfig()->getNested('message.heal'));  
                    }
@@ -88,7 +89,8 @@ class Main extends PluginBase implements Listener {
                       } else {
                         $sender->sendMessage($this->getConfig()->getNested('no-permission.feedother'));
                       }
-                   } else {
+                   } 
+                   if(!isset($args[0])){
                        $sender->getHungerManager()->setFood(20);
                        $sender->getHungerManager()->setSaturation(20);
                        $sender->sendMessage($this->getConfig()->getNested('message.heal'));  
@@ -113,10 +115,12 @@ class Main extends PluginBase implements Listener {
                   }
                 }
                 if($cmd->getName() == "healfeed"){
-                  $this->HealFeed($sender);
-                } else {
-                  $sender->sendMessage($this->getConfig()->getNested('no-permission.ui'));
-                }
+                  if ($sender -> hasPermission("healandfeed-ui.command")) {
+                    $this->HealFeed($sender);
+                    } else {
+                      $sender->sendMessage($this->getConfig()->getNested('no-permission.ui'));
+                    } 
+                  }
         } 
         if(!$sender instanceof Player){
                 if($cmd->getName() == "heal"){
@@ -203,8 +207,8 @@ class Main extends PluginBase implements Listener {
             }
         });
             $form->setTitle($this->getConfig()->getNested('ui.title'));
-            $form->addButton($this->getConfig()->getNested('ui.button.heal'));
-            $form->addButton($this->getConfig()->getNested('ui.button.feed'));
+            $form->addButton($this->getConfig()->getNested('ui.button.heal'),1,$this->getConfig()->getNested('ui.button.image.heal'));
+            $form->addButton($this->getConfig()->getNested('ui.button.feed'),1,$this->getConfig()->getNested('ui.button.image.feed'));
             $form->sendToPlayer($sender);
             return $form;
     }
