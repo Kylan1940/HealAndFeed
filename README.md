@@ -2,8 +2,12 @@
 # Description
 Heal and Feed Command For PocketMine-MP. If you are have a question, please make a [issues](https://github.com/Kylan1940/HealAndFeed/issues/new)
 
-# Changelogs [3.2.0]
->- Added Heal All and Feed All 
+# Changelogs [3.3.0]
+>- Added prefix
+>- Added image for UI
+>- Changed permission for heal and feed other player
+>- Changed config.yml to more aesthetic
+>- Fixed UI permission
 
 # Features
 >- Simple
