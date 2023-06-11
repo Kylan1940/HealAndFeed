@@ -184,7 +184,6 @@ class Main extends PluginBase implements Listener {
   }
    
   public function HealFeed($sender){
-    $prefix = $this->getConfig()->get(self::PREFIX);
         $form = new SimpleForm(function (Player $sender, int $data = null){
             $result = $data;
             if ($result === null) {
@@ -192,6 +191,7 @@ class Main extends PluginBase implements Listener {
             }
             switch ($result) {
                 case 0:
+                  $prefix = $this->getConfig()->get(self::PREFIX); 
                     if ($sender -> hasPermission("healandfeed-heal.command")) {
                       $sender->setHealth($sender->getMaxHealth());
                       $sender->sendMessage($prefix.$this->getConfig()->getNested('message.heal')); 
@@ -200,6 +200,7 @@ class Main extends PluginBase implements Listener {
                     }
                   break;
                 case 1:
+                  $prefix = $this->getConfig()->get(self::PREFIX);
                     if ($sender -> hasPermission("healandfeed-feed.command")) {
                       $sender->getHungerManager()->setFood(20);
                       $sender->getHungerManager()->setSaturation(20);
