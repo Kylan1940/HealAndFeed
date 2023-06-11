@@ -57,6 +57,6 @@ ui:
     feed: "§cFeed"
     image:
       # (OPTIONAL) if you don't want add a image, you can blank it or write ""
-      # See information how to use the image: https://web.kylan1940.online/other/how-to-use-image-pmmp-plugi
+      # See information how to use the image: https://web.kylan1940.online/other/how-to-use-image-pmmp-plugin
       heal: "textures/ui/heart"
       feed: "textures/ui/hungry_full"

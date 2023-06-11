@@ -14,11 +14,12 @@ use Kylan1940\HealAndFeed\Form\{Form, SimpleForm};
 class Main extends PluginBase implements Listener {
   
   const CONFIG_VERSION = 6;
+  public const PREFIX = "§7[§9HealAndFeed§7] ";
   
   public function onEnable() : void {
         $this->updateConfig();
         $this->getServer()->getPluginManager()->registerEvents($this, $this);
-        $this->saveDefaultConfig();
+        //$this->saveDefaultConfig();
         $this->getResource("config.yml");
   }
   
@@ -44,34 +45,35 @@ class Main extends PluginBase implements Listener {
                          $player = $this->getServer()->getPlayerExact($args[0]);
                          if ($player){
                            $player->setHealth($player->getMaxHealth());
-                           $player->sendMessage($this->getConfig()->getNested('message.heal'));  
+                           $player->sendMessage(self::PREFIX.$this->getConfig()->getNested('message.heal'));  
                          } else {
-                           $sender->sendMessage($this->getConfig()->getNested('no-player.found'));
+                           $sender->sendMessage(self::PREFIX.$this->getConfig()->getNested('no-player.found'));
                          }
                        } else {
-                        $sender->sendMessage($this->getConfig()->getNested('no-permission.healother'));
+                        $sender->sendMessage(self::PREFIX.$this->getConfig()->getNested('no-permission.healother'));
                        }
                    } 
                    if (!isset($args[0])){
                        $sender->setHealth($sender->getMaxHealth());
-                       $sender->sendMessage($this->getConfig()->getNested('message.heal'));  
+                       $sender->sendMessage(self::PREFIX.$this->getConfig()->getNested('message.heal'));  
                    }
                   } else {
-                    $sender->sendMessage($this->getConfig()->getNested('no-permission.heal'));
+                    $sender->sendMessage(self::PREFIX.$this->getConfig()->getNested('no-permission.heal'));
                   }
                 }
                 if($cmd->getName() == "healall"){
                   if ($sender -> hasPermission("healandfeed-healall.command")) {
                        if($this->getServer()->getOnlinePlayers() == null){
-                         $sender->sendMessage($this->getConfig()->getNested('no-player.online'));
+                         $sender->sendMessage(self::PREFIX.$this->getConfig()->getNested('no-player.online'));
                        } else {
                          foreach($this->getServer()->getOnlinePlayers() as $online){
                             $online->setHealth($online->getMaxHealth());
-                            $online->sendMessage($this->getConfig()->getNested('message.heal'));  
+                            $online->sendMessage(self::PREFIX.$this->getConfig()->getNested('message.heal'));
+                            $sender->sendMessage(self::PREFIX.$this->getConfig()->getNested('message.healall'));
                          }
                        }
                   } else {
-                    $sender->sendMessage($this->getConfig()->getNested('no-permission.healall'));
+                    $sender->sendMessage(self::PREFIX.$this->getConfig()->getNested('no-permission.healall'));
                   }
                 }
                 if($cmd->getName() == "feed"){
@@ -82,43 +84,44 @@ class Main extends PluginBase implements Listener {
                         if ($player){
                            $player->getHungerManager()->setFood(20);
                            $player->getHungerManager()->setSaturation(20);
-                           $player->sendMessage($this->getConfig()->getNested('message.heal'));  
+                           $player->sendMessage(self::PREFIX.$this->getConfig()->getNested('message.heal'));  
                         } else {
-                         $sender->sendMessage($this->getConfig()->getNested('no-player.found'));
+                         $sender->sendMessage(self::PREFIX.$this->getConfig()->getNested('no-player.found'));
                         } 
                       } else {
-                        $sender->sendMessage($this->getConfig()->getNested('no-permission.feedother'));
+                        $sender->sendMessage(self::PREFIX.$this->getConfig()->getNested('no-permission.feedother'));
                       }
                    } 
                    if(!isset($args[0])){
                        $sender->getHungerManager()->setFood(20);
                        $sender->getHungerManager()->setSaturation(20);
-                       $sender->sendMessage($this->getConfig()->getNested('message.heal'));  
+                       $sender->sendMessage(self::PREFIX.$this->getConfig()->getNested('message.heal'));  
                    }
                   } else {
-                    $sender->sendMessage($this->getConfig()->getNested('no-permission.heal'));
+                    $sender->sendMessage(self::PREFIX.$this->getConfig()->getNested('no-permission.heal'));
                   }
                 }
                 if($cmd->getName() == "feedall"){
                   if ($sender -> hasPermission("healandfeed-feedall.command")) {
                        if($this->getServer()->getOnlinePlayers() == null){
-                         $sender->sendMessage($this->getConfig()->getNested('no-player.online'));
+                         $sender->sendMessage(self::PREFIX.$this->getConfig()->getNested('no-player.online'));
                        } else {
                          foreach($this->getServer()->getOnlinePlayers() as $online){
                             $online->getHungerManager()->setFood(20);
                             $online->getHungerManager()->setSaturation(20);
-                            $online->sendMessage($this->getConfig()->getNested('message.feed'));  
+                            $online->sendMessage(self::PREFIX.$this->getConfig()->getNested('message.feed'));  
+                            $sender->sendMessage(self::PREFIX.$this->getConfig()->getNested('message.feedall'));
                          }
                        }
                   } else {
-                    $sender->sendMessage($this->getConfig()->getNested('no-permission.feedall'));
+                    $sender->sendMessage(self::PREFIX.$this->getConfig()->getNested('no-permission.feedall'));
                   }
                 }
                 if($cmd->getName() == "healfeed"){
                   if ($sender -> hasPermission("healandfeed-ui.command")) {
                     $this->HealFeed($sender);
                     } else {
-                      $sender->sendMessage($this->getConfig()->getNested('no-permission.ui'));
+                      $sender->sendMessage(self::PREFIX.$this->getConfig()->getNested('no-permission.ui'));
                     } 
                   }
         } 
@@ -128,22 +131,22 @@ class Main extends PluginBase implements Listener {
                        $player = $this->getServer()->getPlayerExact($args[0]);
                        if ($player){
                            $player->setHealth($player->getMaxHealth());
-                           $player->sendMessage($this->getConfig()->getNested('message.heal'));  
+                           $player->sendMessage(self::PREFIX.$this->getConfig()->getNested('message.heal'));  
                        } else {
-                           $sender->sendMessage($this->getConfig()->getNested('no-player.found'));
+                           $sender->sendMessage(self::PREFIX.$this->getConfig()->getNested('no-player.found'));
                        }
                    } else {
-                       $sender->sendMessage($this->getConfig()->getNested('console-command.heal'));  
+                       $sender->sendMessage(self::PREFIX.$this->getConfig()->getNested('console-command.heal'));  
                    }
                 }
                 if($cmd->getName() == "healall"){
                        if($this->getServer()->getOnlinePlayers() == null){
-                         $sender->sendMessage($this->getConfig()->getNested('no-player.online'));
+                         $sender->sendMessage(self::PREFIX.$this->getConfig()->getNested('no-player.online'));
                        } else {
                          foreach($this->getServer()->getOnlinePlayers() as $online){
                             $online->setHealth($online->getMaxHealth());
-                            $online->sendMessage($this->getConfig()->getNested('message.heal'));
-                            $sender->sendMessage($this->getConfig()->getNested('message.healall'));
+                            $online->sendMessage(self::PREFIX.$this->getConfig()->getNested('message.heal'));
+                            $sender->sendMessage(self::PREFIX.$this->getConfig()->getNested('message.healall'));
                          }
                        }
                 }
@@ -153,12 +156,12 @@ class Main extends PluginBase implements Listener {
                        if ($player){
                            $player->getHungerManager()->setFood(20);
                            $player->getHungerManager()->setSaturation(20);
-                           $player->sendMessage($this->getConfig()->getNested('message.feed'));  
+                           $player->sendMessage(self::PREFIX.$this->getConfig()->getNested('message.feed'));  
                        } else {
-                           $sender->sendMessage($this->getConfig()->getNested('no-player.found'));
+                           $sender->sendMessage(self::PREFIX.$this->getConfig()->getNested('no-player.found'));
                        }
                    } else {
-                       $sender->sendMessage($this->getConfig()->getNested('console-command.feed'));  
+                       $sender->sendMessage(self::PREFIX.$this->getConfig()->getNested('console-command.feed'));  
                    }
                 }
                 if($cmd->getName() == "feedall"){
@@ -168,13 +171,13 @@ class Main extends PluginBase implements Listener {
                          foreach($this->getServer()->getOnlinePlayers() as $online){
                             $online->getHungerManager()->setFood(20);
                             $online->getHungerManager()->setSaturation(20);
-                            $online->sendMessage($this->getConfig()->getNested('message.feed'));  
-                            $sender->sendMessage($this->getConfig()->getNested('message.feedall'));
+                            $online->sendMessage(self::PREFIX.$this->getConfig()->getNested('message.feed'));  
+                            $sender->sendMessage(self::PREFIX.$this->getConfig()->getNested('message.feedall'));
                          }
                        }
                 }
                 if($cmd->getName() == "healfeed"){
-                  $sender->sendMessage($this->getConfig()->getNested('console-command.ui'));  
+                  $sender->sendMessage(self::PREFIX.$this->getConfig()->getNested('console-command.ui'));  
                 } 
         } 
     return true;
@@ -190,18 +193,18 @@ class Main extends PluginBase implements Listener {
                 case 0:
                     if ($sender -> hasPermission("healandfeed-heal.command")) {
                       $sender->setHealth($sender->getMaxHealth());
-                      $sender->sendMessage($this->getConfig()->getNested('message.heal')); 
+                      $sender->sendMessage(self::PREFIX.$this->getConfig()->getNested('message.heal')); 
                     } else {
-                      $sender->sendMessage($this->getConfig()->getNested('no-permission.heal'));
+                      $sender->sendMessage(self::PREFIX.$this->getConfig()->getNested('no-permission.heal'));
                     }
                   break;
                 case 1:
                     if ($sender -> hasPermission("healandfeed-feed.command")) {
                       $sender->getHungerManager()->setFood(20);
                       $sender->getHungerManager()->setSaturation(20);
-                      $sender->sendMessage($this->getConfig()->getNested('message.feed')); 
+                      $sender->sendMessage(self::PREFIX.$this->getConfig()->getNested('message.feed')); 
                     } else {
-                      $sender->sendMessage($this->getConfig()->getNested('no-permission.feed'));
+                      $sender->sendMessage(self::PREFIX.$this->getConfig()->getNested('no-permission.feed'));
                     }
                   break;
             }
