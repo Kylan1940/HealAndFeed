@@ -20,7 +20,7 @@
 
 # Config Version
 # DON'T CHANGE THIS!!! 
-config-version: "6" 
+config-version: 6
 
 # Prefix:
 prefix: "§7[§9HealAndFeed§7] "
