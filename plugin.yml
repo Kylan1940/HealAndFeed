@@ -1,21 +1,53 @@
 name: HealAndFeed
-version: 3.0.0
+version: 3.5.0
 main: Kylan1940\HealAndFeed\Main
 api: 5.0.0
 author: Kylan1940
+softdepend: 
+- BedrockEconomy
 
 commands:
   heal:
     description: "Add max player health"
     permission: "healandfeed-heal.command"
+  heal <player>:
+    description: "Add max other player health"
+    permission: "healandfeed-healother.command"
+  healall:
+    description: "Add max player health to all online player(s)"
+    permission: "healandfeed-healall.command"
   feed:
     description: "Restore hunger player and hunger saturation player"
     permission: "healandfeed-feed.command"
+  feed <player>:
+    description: "Restore hunger other player and hunger saturation other player"
+    permission: "healandfeed-feedother.command"
+  feedall:
+    description: "Restore hunger player and hunger saturation all online player(s)"
+    permission: "healandfeed-feedall.command"
+  healfeed:
+    description: "HealAndFeedUI"
+    permission: "healandfeed-ui.command"
     
 permissions:
   healandfeed-heal.command:
     description: "Permission for heal command"
     default: op
+  healandfeed-healother.command:
+    description: "Permission for heal other player command"
+    default: op
+  healandfeed-healall.command:
+    description: "Permission for heal all command"
+    default: op
   healandfeed-feed.command:
     description: "Permission for feed command"
+    default: op
+  healandfeed-feedother.command:
+    description: "Permission for feed other player command"
+    default: op
+  healandfeed-feedall.command:
+    description: "Permission for feed all command"
+    default: op
+  healandfeed-ui.command:
+    description: "Permission for HealAndFeed UI command"
     default: op
