@@ -10,6 +10,7 @@
 # ===========================================================================
 # Github: https://github.com/Kylan1940
 # Website: https://web.kylan1940.online
+# Discord Community: discord.io/kylancommunity
 # ===========================================================================
 
 # HEAL AND FEED CONFIGURATION
@@ -17,10 +18,13 @@
 # HELP:
 # \n for new line
 # § for color and special symbols
+# {playerGive} for player who given 
+# {playerName} for player who give
+# {countOnline} for count online player(s)
 
 # Config Version
 # DON'T CHANGE THIS!!! 
-config-version: 6
+config-version: 7
 
 # Prefix:
 prefix: "§7[§9HealAndFeed§7] "
@@ -30,10 +34,10 @@ prefix: "§7[§9HealAndFeed§7] "
 # money = use money, BedrockEconomy required
 # both = use permission and money, BedrockEconomy required
 # NOTE: for HealAndFeed UI, you must to add HealAndFeed UI permission
-use: "both" # (permission/money/both)
+use: "permission" # (permission/money/both)
 
 # Command:
-no-permission:
+no-permission: # Only work if you choose "permission" or "both", except for ui
   heal:
     self: "§cYou don't have §aHeal Command §cpermission"
     other: "§cYou don't have §aHeal Other Player Command §cpermission"
@@ -47,13 +51,32 @@ console-command:
   heal: "§c/heal is heal for playerself and only in-game, for console you must /heal (playerOnline)"
   feed: "§c/feed is feed for playerself and only in-game, for console you must /feed (playerOnline)"
   ui: "§c/healfeed is only in-game"
+no-enough-money: # Only work if you choose "money" or "both"
+  heal: 
+    self: ""
+    other: ""
+    all: ""
+  feed:
+    self: ""
+    other: ""
+    all: ""
 
 # Message:
 message:
-  heal: "§aYou've been healed"
-  feed: "§aYou're full"
-  healall: "§aHeal all players successfully"
-  feedall: "§aFeed all players successfully"
+  receive:
+    self:
+      heal: "§aYou've been healed"
+      feed: "§aYou're full"
+    other:
+      heal: "§aYou've been healed by {playerName}"
+      feed: "§aYou're full by {playerName}"
+  sent:
+    other:
+      heal: "§aHeal {playerGive} successfully"
+      feed: "§aFeed {playerGive} successfully"
+    all:
+      heal: "§aHeal all {countOnline} players ({playerGive}) successfully"
+      feed: "§aFeed all {countOnline} players ({playerGive}) successfully"
 no-player:
   found: "§cThis player does not exist"
   online: "§cThere are no online players in server"

@@ -19,6 +19,9 @@ assignees: ''
 **HealAndFeed Version :**
 ```Your HealAndFeed Version Here```
 
+**Config Version :**
+```Your HealAndFeed Config Version Here```
+
 **Describe the error :**
 ```Describe The Error Here```
 

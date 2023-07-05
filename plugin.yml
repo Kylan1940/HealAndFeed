@@ -9,45 +9,45 @@ softdepend:
 commands:
   heal:
     description: "Add max player health"
-    permission: "healandfeed-heal.command"
+    permission: "healandfeed.heal.self"
   heal <player>:
     description: "Add max other player health"
-    permission: "healandfeed-healother.command"
+    permission: "healandfeed.heal.other"
   healall:
     description: "Add max player health to all online player(s)"
-    permission: "healandfeed-healall.command"
+    permission: "healandfeed.heal.all"
   feed:
     description: "Restore hunger player and hunger saturation player"
-    permission: "healandfeed-feed.command"
+    permission: "healandfeed.feed.self"
   feed <player>:
     description: "Restore hunger other player and hunger saturation other player"
-    permission: "healandfeed-feedother.command"
+    permission: "healandfeed.feed.other"
   feedall:
     description: "Restore hunger player and hunger saturation all online player(s)"
-    permission: "healandfeed-feedall.command"
+    permission: "healandfeed.feed.all"
   healfeed:
     description: "HealAndFeedUI"
-    permission: "healandfeed-ui.command"
+    permission: "healandfeed.ui"
     
 permissions:
-  healandfeed-heal.command:
+  healandfeed.heal.self:
     description: "Permission for heal command"
     default: op
-  healandfeed-healother.command:
+  healandfeed.heal.other:
     description: "Permission for heal other player command"
     default: op
-  healandfeed-healall.command:
+  healandfeed.heal.all:
     description: "Permission for heal all command"
     default: op
-  healandfeed-feed.command:
+  healandfeed.feed.self:
     description: "Permission for feed command"
     default: op
-  healandfeed-feedother.command:
+  healandfeed.feed.other:
     description: "Permission for feed other player command"
     default: op
-  healandfeed-feedall.command:
+  healandfeed.feed.all:
     description: "Permission for feed all command"
     default: op
-  healandfeed-ui.command:
+  healandfeed.ui:
     description: "Permission for HealAndFeed UI command"
     default: op
