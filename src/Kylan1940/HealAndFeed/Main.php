@@ -11,7 +11,7 @@ use pocketmine\event\Listener;
 use pocketmine\utils\TextFormat;
 use cooldogedev\BedrockEconomy\api\BedrockEconomyAPI; 
 use cooldogedev\BedrockEconomy\libs\cooldogedev\libSQL\context\ClosureContext;
-use Kylan1940\HealAndFeed\Form\{Form, SimpleForm};
+use Kylan1940\HealAndFeed\form\{Form, SimpleForm};
 
 class Main extends PluginBase implements Listener {
   
@@ -38,8 +38,8 @@ class Main extends PluginBase implements Listener {
   }
    
   public function onCommand(CommandSender $sender, Command $cmd, string $label, array $args) : bool{
-    $heal = $this->getConfig()->getNested('money.heal'); 
-    $feed = $this->getConfig()->getNested('money.feed');
+    $healprice = $this->getConfig()->getNested('money.heal'); 
+    $feedprice = $this->getConfig()->getNested('money.feed');
     $prefix = $this->getConfig()->getNested(self::PREFIX);
     // playerGive variable
     $playerGive = "";
@@ -58,9 +58,9 @@ class Main extends PluginBase implements Listener {
               } else {
                 foreach($this->getServer()->getOnlinePlayers() as $online){
                   $online->setHealth($online->getMaxHealth());
-                  $online->sendMessage(str_replace(["{playerGive}", "{playerName}", "{countOnline}"], [$playerGive, $sender->getName(), count($this->getServer()->getOnlinePlayers())], $prefix.$this->getConfig()->getNested('message.receive.other.heal')));
+                  $online->sendMessage(str_replace(["{playerGive}", "{playerName}", "{countOnline}"], [$playerGive, $sender->getName(), count($this->getServer()->getOnlinePlayers())], $prefix.$this->getConfig()->getNested('message.receive.heal.other')));
                 }
-                $sender->sendMessage(str_replace(["{playerGive}", "{playerName}", "{countOnline}"], [$playerGive, $sender->getName(), count($this->getServer()->getOnlinePlayers())], $prefix.$this->getConfig()->getNested('message.sent.all.heal'))); 
+                $sender->sendMessage(str_replace(["{playerGive}", "{playerName}", "{countOnline}"], [$playerGive, $sender->getName(), count($this->getServer()->getOnlinePlayers())], $prefix.$this->getConfig()->getNested('message.sent.heal.all'))); 
               }
             } else {
               $sender->sendMessage(str_replace(["{playerGive}", "{playerName}", "{countOnline}"], [$playerGive, $sender->getName(), count($this->getServer()->getOnlinePlayers())], $prefix.$this->getConfig()->getNested('no-permission.heal.all')));
@@ -71,8 +71,8 @@ class Main extends PluginBase implements Listener {
               $player = $this->getServer()->getPlayerExact($args[0]);
               if ($player){
                 $player->setHealth($player->getMaxHealth());
-                $player->sendMessage(str_replace(["{playerGive}", "{playerName}", "{countOnline}"], [$args, $sender->getName(), count($this->getServer()->getOnlinePlayers())], $prefix.$this->getConfig()->getNested('message.receive.other.heal')));  
-                $sender->sendMessage(str_replace(["{playerGive}", "{playerName}", "{countOnline}"], [$playerGive, $sender->getName(), count($this->getServer()->getOnlinePlayers())], $prefix.$this->getConfig()->getNested('message.sent.other.heal')));  
+                $player->sendMessage(str_replace(["{playerGive}", "{playerName}", "{countOnline}"], [$args, $sender->getName(), count($this->getServer()->getOnlinePlayers())], $prefix.$this->getConfig()->getNested('message.receive.heal.other')));  
+                $sender->sendMessage(str_replace(["{playerGive}", "{playerName}", "{countOnline}"], [$playerGive, $sender->getName(), count($this->getServer()->getOnlinePlayers())], $prefix.$this->getConfig()->getNested('message.sent.heal.other')));  
               } else {
                 $sender->sendMessage(str_replace(["{playerGive}", "{playerName}", "{countOnline}"], [$playerGive, $sender->getName(), count($this->getServer()->getOnlinePlayers())], $prefix.$this->getConfig()->getNested('no-player.found')));
               }
@@ -83,7 +83,7 @@ class Main extends PluginBase implements Listener {
           if (!isset($args[0])){
             if ($sender -> hasPermission("healandfeed.heal.self")) {
               $sender->setHealth($sender->getMaxHealth());
-              $sender->sendMessage(str_replace(["{playerGive}", "{playerName}", "{countOnline}"], [$args, $sender->getName(), count($this->getServer()->getOnlinePlayers())], $prefix.$this->getConfig()->getNested('message.receive.self.heal')));   
+              $sender->sendMessage(str_replace(["{playerGive}", "{playerName}", "{countOnline}"], [$args, $sender->getName(), count($this->getServer()->getOnlinePlayers())], $prefix.$this->getConfig()->getNested('message.receive.heal.self')));   
             } else {
               $sender->sendMessage(str_replace(["{playerGive}", "{playerName}", "{countOnline}"], [$playerGive, $sender->getName(), count($this->getServer()->getOnlinePlayers())], $prefix.$this->getConfig()->getNested('no-permission.heal.self')));
             } 
@@ -98,9 +98,9 @@ class Main extends PluginBase implements Listener {
                 foreach($this->getServer()->getOnlinePlayers() as $online){
                   $online->getHungerManager()->setFood($online->getHungerManager()->getMaxFood());
                   $online->getHungerManager()->setSaturation(20);
-                  $online->sendMessage(str_replace(["{playerGive}", "{playerName}", "{countOnline}"], [$playerGive, $sender->getName(), count($this->getServer()->getOnlinePlayers())], $prefix.$this->getConfig()->getNested('message.receive.other.feed')));
+                  $online->sendMessage(str_replace(["{playerGive}", "{playerName}", "{countOnline}"], [$playerGive, $sender->getName(), count($this->getServer()->getOnlinePlayers())], $prefix.$this->getConfig()->getNested('message.receive.feed.other')));
                 }
-                $sender->sendMessage(str_replace(["{playerGive}", "{playerName}", "{countOnline}"], [$playerGive, $sender->getName(), count($this->getServer()->getOnlinePlayers())], $prefix.$this->getConfig()->getNested('message.sent.all.feed'))); 
+                $sender->sendMessage(str_replace(["{playerGive}", "{playerName}", "{countOnline}"], [$playerGive, $sender->getName(), count($this->getServer()->getOnlinePlayers())], $prefix.$this->getConfig()->getNested('message.sent.feed.all'))); 
               }
             } else {
               $sender->sendMessage(str_replace(["{playerGive}", "{playerName}", "{countOnline}"], [$playerGive, $sender->getName(), count($this->getServer()->getOnlinePlayers())], $prefix.$this->getConfig()->getNested('no-permission.feed.all')));
@@ -112,8 +112,8 @@ class Main extends PluginBase implements Listener {
               if ($player){
                 $player->getHungerManager()->setFood($player->getHungerManager()->getMaxFood());
                 $player->getHungerManager()->setSaturation(20);
-                $player->sendMessage(str_replace(["{playerGive}", "{playerName}", "{countOnline}"], [$args[0], $sender->getName(), count($this->getServer()->getOnlinePlayers())], $prefix.$this->getConfig()->getNested('message.receive.other.feed')));  
-                $sender->sendMessage(str_replace(["{playerGive}", "{playerName}", "{countOnline}"], [$args[0], $sender->getName(), count($this->getServer()->getOnlinePlayers())], $prefix.$this->getConfig()->getNested('message.sent.other.feed')));  
+                $player->sendMessage(str_replace(["{playerGive}", "{playerName}", "{countOnline}"], [$args[0], $sender->getName(), count($this->getServer()->getOnlinePlayers())], $prefix.$this->getConfig()->getNested('message.receive.feed.other')));  
+                $sender->sendMessage(str_replace(["{playerGive}", "{playerName}", "{countOnline}"], [$args[0], $sender->getName(), count($this->getServer()->getOnlinePlayers())], $prefix.$this->getConfig()->getNested('message.sent.feed.other')));  
               } else {
                 $sender->sendMessage(str_replace(["{playerGive}", "{playerName}", "{countOnline}"], [$args[0], $sender->getName(), count($this->getServer()->getOnlinePlayers())], $prefix.$this->getConfig()->getNested('no-player.found')));
               }
@@ -125,7 +125,7 @@ class Main extends PluginBase implements Listener {
             if ($sender -> hasPermission("healandfeed.feed.self")) {
               $sender->getHungerManager()->setFood($sender->getHungerManager()->getMaxFood());
               $sender->getHungerManager()->setSaturation(20);
-              $sender->sendMessage(str_replace(["{playerGive}", "{playerName}", "{countOnline}"], [$args[0], $sender->getName(), count($this->getServer()->getOnlinePlayers())], $prefix.$this->getConfig()->getNested('message.receive.self.feed')));   
+              $sender->sendMessage(str_replace(["{playerGive}", "{playerName}", "{countOnline}"], [$args[0], $sender->getName(), count($this->getServer()->getOnlinePlayers())], $prefix.$this->getConfig()->getNested('message.receive.feed.self')));   
             } else {
               $sender->sendMessage(str_replace(["{playerGive}", "{playerName}", "{countOnline}"], [$args[0], $sender->getName(), count($this->getServer()->getOnlinePlayers())], $prefix.$this->getConfig()->getNested('no-permission.feed.self')));
             } 
@@ -133,41 +133,53 @@ class Main extends PluginBase implements Listener {
         }
         if($cmd->getName() == "healfeed"){
           if($sender->hasPermission("healandfeed.ui")){
-            $this->HFPerm($sender);
+            $this->HealFeed($sender);
           } else {
             $sender->sendMessage(str_replace(["{playerGive}", "{playerName}", "{countOnline}"], [$args[0], $sender->getName(), count($this->getServer()->getOnlinePlayers())], $prefix.$this->getConfig()->getNested('no-permission.ui')));
           }  
         }
       }
       if($this->getConfig()->getNested('use') == "money"){
+        if($cmd->getName() == "heal"){
+          if(isset($args[0]) && $args[0] == "all"){
+            BedrockEconomy::reduceMoney($sender, $healprice, static function(bool $success) use ($sender, $price): void {
+              
+            });
+          }
+        }
+      }
+      if($this->getConfig()->getNested('use') == "both"){
         
+      }
+      if($this->getConfig()->getNested('use') != "permission" && $this->getConfig()->getNested('use') != "money" && $this->getConfig()->getNested('use') != "both"){
+        $sender->sendMessage($prefix."Your 'use' configuration is wrong, check the instructions, if there's problem again, please report the plugin!");
       }
     } 
     if(!$sender instanceof Player){
       if($cmd->getName() == "heal"){
-        if (isset($args[0]) && $args[0] && $args[0] == "all"){
+        if (isset($args[0]) && $args[0] == "all"){
           if($this->getServer()->getOnlinePlayers() == null){
             $sender->sendMessage(str_replace(["{playerGive}", "{playerName}", "{countOnline}"], [$playerGive, $sender->getName(), count($this->getServer()->getOnlinePlayers())], $prefix.$this->getConfig()->getNested('no-player.online')));
           } else {
             foreach($this->getServer()->getOnlinePlayers() as $online){
               $online->setHealth($online->getMaxHealth());
-              $online->sendMessage(str_replace(["{playerGive}", "{playerName}", "{countOnline}"], [$playerGive, $sender->getName(), count($this->getServer()->getOnlinePlayers())], $prefix.$this->getConfig()->getNested('message.receive.other.heal')));
+              $online->sendMessage(str_replace(["{playerGive}", "{playerName}", "{countOnline}"], [$playerGive, $sender->getName(), count($this->getServer()->getOnlinePlayers())], $prefix.$this->getConfig()->getNested('message.receive.heal.other')));
             }
-            $sender->sendMessage(str_replace(["{playerGive}", "{playerName}", "{countOnline}"], [$playerGive, $sender->getName(), count($this->getServer()->getOnlinePlayers())], $prefix.$this->getConfig()->getNested('message.sent.all.heal'))); 
+            $sender->sendMessage(str_replace(["{playerGive}", "{playerName}", "{countOnline}"], [$playerGive, $sender->getName(), count($this->getServer()->getOnlinePlayers())], $prefix.$this->getConfig()->getNested('message.sent.heal.all'))); 
           }
         }
         if (isset($args[0]) && $args[0] != "all"){
           $player = $this->getServer()->getPlayerExact($args[0]);
           if ($player){
             $player->setHealth($player->getMaxHealth());
-            $player->sendMessage(str_replace(["{playerGive}", "{playerName}", "{countOnline}"], [$args[0], $sender->getName(), count($this->getServer()->getOnlinePlayers())], $prefix.$this->getConfig()->getNested('message.receive.other.heal')));  
-            $sender->sendMessage(str_replace(["{playerGive}", "{playerName}", "{countOnline}"], [$args[0], $sender->getName(), count($this->getServer()->getOnlinePlayers())], $prefix.$this->getConfig()->getNested('message.sent.other.heal')));  
+            $player->sendMessage(str_replace(["{playerGive}", "{playerName}", "{countOnline}"], [$args[0], $sender->getName(), count($this->getServer()->getOnlinePlayers())], $prefix.$this->getConfig()->getNested('message.receive.heal.other')));  
+            $sender->sendMessage(str_replace(["{playerGive}", "{playerName}", "{countOnline}"], [$args[0], $sender->getName(), count($this->getServer()->getOnlinePlayers())], $prefix.$this->getConfig()->getNested('message.sent.heal.other')));  
           } else {
             $sender->sendMessage(str_replace(["{playerGive}", "{playerName}", "{countOnline}"], [$args[0], $sender->getName(), count($this->getServer()->getOnlinePlayers())], $prefix.$this->getConfig()->getNested('no-player.found')));
           }
         }
         if (!isset($args[0])){
-          $sender->sendMessage(str_replace(["{playerGive}", "{playerName}", "{countOnline}"], [$args[0], $sender->getName(), count($this->getServer()->getOnlinePlayers())], $prefix.$this->getConfig()->getNested('console-command.heal')));
+          $sender->sendMessage(str_replace(["{playerGive}", "{playerName}", "{countOnline}"], ["NONE", $sender->getName(), count($this->getServer()->getOnlinePlayers())], $prefix.$this->getConfig()->getNested('console-command.heal')));
         }
       }
       if($cmd->getName() == "feed"){
@@ -178,9 +190,9 @@ class Main extends PluginBase implements Listener {
             foreach($this->getServer()->getOnlinePlayers() as $online){
               $online->getHungerManager()->setFood($online->getHungerManager()->getMaxFood());
               $online->getHungerManager()->setSaturation(20);
-              $online->sendMessage(str_replace(["{playerGive}", "{playerName}", "{countOnline}"], [$playerGive, $sender->getName(), count($this->getServer()->getOnlinePlayers())], $prefix.$this->getConfig()->getNested('message.receive.other.feed')));
+              $online->sendMessage(str_replace(["{playerGive}", "{playerName}", "{countOnline}"], [$playerGive, $sender->getName(), count($this->getServer()->getOnlinePlayers())], $prefix.$this->getConfig()->getNested('message.receive.feed.other')));
             }
-            $sender->sendMessage(str_replace(["{playerGive}", "{playerName}", "{countOnline}"], [$playerGive, $sender->getName(), count($this->getServer()->getOnlinePlayers())], $prefix.$this->getConfig()->getNested('message.sent.all.feed'))); 
+            $sender->sendMessage(str_replace(["{playerGive}", "{playerName}", "{countOnline}"], [$playerGive, $sender->getName(), count($this->getServer()->getOnlinePlayers())], $prefix.$this->getConfig()->getNested('message.sent.feed.all'))); 
           }
         }
         if (isset($args[0]) && $args[0] != "all"){
@@ -189,23 +201,23 @@ class Main extends PluginBase implements Listener {
             $player->getHungerManager()->setFood($player->getHungerManager()->getMaxFood());
             $player->getHungerManager()->setSaturation(20);
             $player->sendMessage(str_replace(["{playerGive}", "{playerName}", "{countOnline}"], [$args[0], $sender->getName(), count($this->getServer()->getOnlinePlayers())], $prefix.$this->getConfig()->getNested('message.receive.other.feed')));  
-            $sender->sendMessage(str_replace(["{playerGive}", "{playerName}", "{countOnline}"], [$args[0], $sender->getName(), count($this->getServer()->getOnlinePlayers())], $prefix.$this->getConfig()->getNested('message.sent.other.feed')));  
+            $sender->sendMessage(str_replace(["{playerGive}", "{playerName}", "{countOnline}"], [$args[0], $sender->getName(), count($this->getServer()->getOnlinePlayers())], $prefix.$this->getConfig()->getNested('message.sent.feed.other')));  
           } else {
             $sender->sendMessage(str_replace(["{playerGive}", "{playerName}", "{countOnline}"], [$args[0], $sender->getName(), count($this->getServer()->getOnlinePlayers())], $prefix.$this->getConfig()->getNested('no-player.found')));
           }
         }
         if (!isset($args[0])){
-          $sender->sendMessage(str_replace(["{playerGive}", "{playerName}", "{countOnline}"], [$args[0], $sender->getName(), count($this->getServer()->getOnlinePlayers())], $prefix.$this->getConfig()->getNested('console-command.feed')));
+          $sender->sendMessage(str_replace(["{playerGive}", "{playerName}", "{countOnline}"], ["NONE", $sender->getName(), count($this->getServer()->getOnlinePlayers())], $prefix.$this->getConfig()->getNested('console-command.feed')));
         }
       }
       if($cmd->getName() == "healfeed"){
-        $sender->sendMessage(str_replace(["{playerGive}", "{playerName}", "{countOnline}"], [$args[0], $sender->getName(), count($this->getServer()->getOnlinePlayers())], $prefix.$this->getConfig()->getNested('console-command.ui')));  
+        $sender->sendMessage(str_replace(["{playerGive}", "{playerName}", "{countOnline}"], ["NONE", $sender->getName(), count($this->getServer()->getOnlinePlayers())], $prefix.$this->getConfig()->getNested('console-command.ui')));  
       } 
     } 
     return true;
   }
    
-  public function HFPerm($sender){
+  public function HealFeed($sender){
     $form = new SimpleForm(function (Player $sender, int $data = null){
       $result = $data;
       if ($result === null) {
@@ -221,11 +233,23 @@ class Main extends PluginBase implements Listener {
             $playerGive .= $onlinePlayers . ", ";
           }
           $playerGive = rtrim($playerGive, ", ");
-          if ($sender -> hasPermission("healandfeed.heal.self")) {
-            $sender->setHealth($sender->getMaxHealth());
-            $sender->sendMessage(str_replace(["{playerGive}", "{playerName}", "{countOnline}"], [$args[0], $sender->getName(), count($this->getServer()->getOnlinePlayers())], $prefix.$this->getConfig()->getNested('message.receive.self.heal'))); 
-          } else {
-            $sender->sendMessage(str_replace(["{playerGive}", "{playerName}", "{countOnline}"], [$args[0], $sender->getName(), count($this->getServer()->getOnlinePlayers())], $prefix.$this->getConfig()->getNested('no-permission.heal.self')));
+          
+          if($this->getConfig()->getNested('use') == "permission"){
+            if($sender->hasPermission("healandfeed.heal.self")){
+              $sender->setHealth($sender->getMaxHealth());
+              $sender->sendMessage(str_replace(["{playerGive}", "{playerName}", "{countOnline}"], [$args, $sender->getName(), count($this->getServer()->getOnlinePlayers())], $prefix.$this->getConfig()->getNested('message.receive.heal.self')));   
+            } else {
+              $sender->sendMessage(str_replace(["{playerGive}", "{playerName}", "{countOnline}"], [$playerGive, $sender->getName(), count($this->getServer()->getOnlinePlayers())], $prefix.$this->getConfig()->getNested('no-permission.heal.self')));
+            }
+          }
+          if($this->getConfig()->getNested('use') == "money"){
+            
+          }
+          if($this->getConfig()->getNested('use') == "both"){
+            
+          }
+          if($this->getConfig()->getNested('use') != "permission" && $this->getConfig()->getNested('use') != "money" && $this->getConfig()->getNested('use') != "both"){
+            $sender->sendMessage($prefix."Your 'use' configuration is wrong, check the instructions, if there's problem again, please report the plugin!");
           }
           break;
         case 1:
@@ -237,12 +261,24 @@ class Main extends PluginBase implements Listener {
             $playerGive .= $onlinePlayers . ", ";
           }
           $playerGive = rtrim($playerGive, ", ");
-          if ($sender -> hasPermission("healandfeed.heal.self")) {
-            $sender->getHungerManager()->setFood($sender->getHungerManager()->getMaxFood());
-            $sender->getHungerManager()->setSaturation(20);
-            $sender->sendMessage(str_replace(["{playerGive}", "{playerName}", "{countOnline}"], [$args[0], $sender->getName(), count($this->getServer()->getOnlinePlayers())], $prefix.$this->getConfig()->getNested('message.receive.self.feed'))); 
-          } else {
-            $sender->sendMessage(str_replace(["{playerGive}", "{playerName}", "{countOnline}"], [$args[0], $sender->getName(), count($this->getServer()->getOnlinePlayers())], $prefix.$this->getConfig()->getNested('no-permission.feed.self')));
+          
+          if($this->getConfig()->getNested('use') == "permission"){
+            if($sender->hasPermission("healandfeed.feed.self")){
+              $sender->getHungerManager()->setFood($sender->getHungerManager()->getMaxFood());
+              $sender->getHungerManager()->setSaturation(20);
+              $sender->sendMessage(str_replace(["{playerGive}", "{playerName}", "{countOnline}"], [$args[0], $sender->getName(), count($this->getServer()->getOnlinePlayers())], $prefix.$this->getConfig()->getNested('message.receive.feed.self')));   
+            } else {
+              $sender->sendMessage(str_replace(["{playerGive}", "{playerName}", "{countOnline}"], [$args[0], $sender->getName(), count($this->getServer()->getOnlinePlayers())], $prefix.$this->getConfig()->getNested('no-permission.feed.self')));
+            }
+          }
+          if($this->getConfig()->getNested('use') == "money"){
+            
+          }
+          if($this->getConfig()->getNested('use') == "both"){
+            
+          }
+          if($this->getConfig()->getNested('use') != "permission" && $this->getConfig()->getNested('use') != "money" && $this->getConfig()->getNested('use') != "both"){
+            $sender->sendMessage($prefix."Your 'use' configuration is wrong, check the instructions, if there's problem again, please report the plugin!");
           }
           break;
       }

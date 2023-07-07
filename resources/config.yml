@@ -64,19 +64,19 @@ no-enough-money: # Only work if you choose "money" or "both"
 # Message:
 message:
   receive:
-    self:
-      heal: "§aYou've been healed"
-      feed: "§aYou're full"
-    other:
-      heal: "§aYou've been healed by {playerName}"
-      feed: "§aYou're full by {playerName}"
+    heal:
+      self: "§aYou've been healed"
+      other: "§aYou've been healed by {playerName}"
+    feed:
+      self: "§aYou're full"
+      other: "§aYou're full by {playerName}"
   sent:
-    other:
-      heal: "§aHeal {playerGive} successfully"
-      feed: "§aFeed {playerGive} successfully"
-    all:
-      heal: "§aHeal all {countOnline} players ({playerGive}) successfully"
-      feed: "§aFeed all {countOnline} players ({playerGive}) successfully"
+    heal:
+      other: "§aHeal {playerGive} successfully"
+      all: "§aHeal all {countOnline} players ({playerGive}) successfully"
+    feed:
+      other: "§aFeed {playerGive} successfully"
+      all: "§aFeed all {countOnline} players ({playerGive}) successfully"
 no-player:
   found: "§cThis player does not exist"
   online: "§cThere are no online players in server"
@@ -97,11 +97,5 @@ ui:
 # It will work if you choose "money" or "both"
 # BedrockEconomy REQUIRED
 money:
-  heal:
-    self: "100"
-    other: "150"
-    all: "200" # each player (if there's 10 players, you must pay for 10 players)
-  feed:
-    self: "100"
-    other: "150"
-    all: "200" # each player (if there's 10 players, you must pay for 10 players)
+  heal: "200"
+  feed: "300"
