@@ -5,7 +5,6 @@ namespace Kylan1940\HealAndFeed;
 use Kylan1940\HealAndFeed\Form\SimpleForm;
 use pocketmine\command\Command;
 use pocketmine\command\CommandSender;
-use pocketmine\command\ConsoleCommandSender;
 use pocketmine\event\Listener;
 use pocketmine\player\Player;
 use pocketmine\plugin\PluginBase;
@@ -55,7 +54,7 @@ class Main extends PluginBase implements Listener {
 					return false;
 				}
 			} else {
-				if ($sender instanceof ConsoleCommandSender) {
+				if (!$sender instanceof Player) {
 					$sender->sendMessage($this->getConfig()->get(self::PREFIX) . $this->getConfig()->getNested('console-command.heal'));
 					return false;
 				}
@@ -95,7 +94,7 @@ class Main extends PluginBase implements Listener {
 					return false;
 				}
 			} else {
-				if ($sender instanceof ConsoleCommandSender) {
+				if (!$sender instanceof Player) {
 					$sender->sendMessage($this->getConfig()->get(self::PREFIX) . $this->getConfig()->getNested('console-command.feed'));
 					return false;
 				}
@@ -118,7 +117,7 @@ class Main extends PluginBase implements Listener {
 			$this->feedAll();
 			$sender->sendMessage($this->getConfig()->get(self::PREFIX) . $this->getConfig()->getNested('message.feedall'));
 		} elseif ($cmd->getName() == "healfeed") {
-			if ($sender instanceof ConsoleCommandSender) {
+			if (!$sender instanceof Player) {
 				$sender->sendMessage($this->getConfig()->get(self::PREFIX) . $this->getConfig()->getNested('console-command.ui'));
 				return false;
 			}
