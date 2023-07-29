@@ -12,29 +12,16 @@ use pocketmine\utils\TextFormat;
 use cooldogedev\BedrockEconomy\api\BedrockEconomyAPI; 
 use cooldogedev\BedrockEconomy\libs\cooldogedev\libSQL\context\ClosureContext;
 use Kylan1940\HealAndFeed\form\{Form, SimpleForm};
+use Kylan1940\HealAndFeed\UpdateNotifier\{ConfigUpdater};
 
 class Main extends PluginBase implements Listener {
   
-  const CONFIG_VERSION = 7;
   const PREFIX = "prefix";
   
   public function onEnable() : void {
-    $this->updateConfig();
+    ConfigUpdater::update($this);
     $this->getServer()->getPluginManager()->registerEvents($this, $this);
     $this->getResource("config.yml");
-  }
-  
-  private function updateConfig(){
-    if (!file_exists($this->getDataFolder() . 'config.yml')) {
-      $this->saveResource('config.yml');
-      return;
-    }
-    if ($this->getConfig()->get('config-version') !== self::CONFIG_VERSION) {
-      $config_version = $this->getConfig()->get('config-version');
-      $this->getLogger()->info("Your Config isn't the latest. We renamed your old config to §bconfig-" . $config_version . ".yml §6and created a new config");
-      rename($this->getDataFolder() . 'config.yml', $this->getDataFolder() . 'config-' . $config_version . '.yml');
-      $this->saveResource('config.yml');
-    }
   }
    
   public function onCommand(CommandSender $sender, Command $cmd, string $label, array $args) : bool{

@@ -1,5 +1,6 @@
 [![](https://poggit.pmmp.io/shield.state/HealAndFeed)](https://poggit.pmmp.io/p/HealAndFeed) 
 [![](https://poggit.pmmp.io/shield.dl.total/HealAndFeed)](https://poggit.pmmp.io/p/HealAndFeed)
+[![Patreon](https://img.shields.io/badge/Patreon-F96854?style=for-the-badge&logo=patreon&logoColor=white)](https://patreon.com/Kylan1940)
 ![Discord Banner 1](https://discordapp.com/api/guilds/1121026138525945956/widget.png?style=banner1)
 
 # Description
