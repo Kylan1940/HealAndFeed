@@ -1,7 +1,5 @@
 [![](https://poggit.pmmp.io/shield.state/HealAndFeed)](https://poggit.pmmp.io/p/HealAndFeed) 
 [![](https://poggit.pmmp.io/shield.dl.total/HealAndFeed)](https://poggit.pmmp.io/p/HealAndFeed)
-[![Patreon](https://img.shields.io/badge/Patreon-F96854?style=for-the-badge&logo=patreon&logoColor=white)](https://patreon.com/Kylan1940)
-![Discord Banner 1](https://discordapp.com/api/guilds/1121026138525945956/widget.png?style=banner1)
 
 # Description
 Heal and Feed Command For PocketMine-MP. If you are have a question, please make a [issues](https://github.com/Kylan1940/HealAndFeed/issues/new)
@@ -19,24 +17,24 @@ Heal and Feed Command For PocketMine-MP. If you are have a question, please make
 >- Heal All and Feed All online player(s)
 >- With UI 
 >- Console Support
->- Use permission/money/both systems
+>- Use permission/money systems
 
 # Download
-| Version | Phar | Zip | Support |
-|---|---|---|---|
-| 3.4.0 | [Download](https://poggit.pmmp.io/p/HealAndFeed/3.4.0) | [Download](https://github.com/Kylan1940/HealAndFeed/archive/refs/tags/3.4.0.zip) | 5.x.x |
-| 3.3.0 | [Download](https://poggit.pmmp.io/p/HealAndFeed/3.3.0) | [Download](https://github.com/Kylan1940/HealAndFeed/archive/refs/tags/3.3.0.zip) | 5.x.x |
-| 3.2.0 | [Download](https://poggit.pmmp.io/p/HealAndFeed/3.2.0) | [Download](https://github.com/Kylan1940/HealAndFeed/archive/refs/tags/3.2.0.zip) | 5.x.x |
-| 3.1.0 | [Download](https://poggit.pmmp.io/p/HealAndFeed/3.1.0) | [Download](https://github.com/Kylan1940/HealAndFeed/archive/refs/tags/3.1.0.zip) | 5.x.x |
-| 3.0.0 | [Download](https://poggit.pmmp.io/p/HealAndFeed/3.0.0) | [Download](https://github.com/Kylan1940/HealAndFeed/archive/refs/tags/3.0.0.zip) | 5.x.x |
-| 2.2.0 | [Download](https://poggit.pmmp.io/p/HealAndFeed/2.2.0) | [Download](https://github.com/Kylan1940/HealAndFeed/archive/refs/tags/2.2.0.zip) | 4.x.x |
-| 2.1.0 | [Download](https://poggit.pmmp.io/p/HealAndFeed/2.1.0) | [Download](https://github.com/Kylan1940/HealAndFeed/archive/refs/tags/2.1.0.zip) | 4.x.x |
-| 2.0.0 | [Download](https://poggit.pmmp.io/p/HealAndFeed/2.0.0) | [Download](https://github.com/Kylan1940/HealAndFeed/archive/refs/tags/2.0.0.zip) | 4.x.x |
-| 1.1.0 | [Download](https://poggit.pmmp.io/p/HealAndFeed/1.1.0) | [Download](https://github.com/Kylan1940/HealAndFeed/archive/refs/tags/1.1.0.zip) | 3.x.x |
-| 1.0.0 | [Download](https://poggit.pmmp.io/p/HealAndFeed/1.0.0) | [Download](https://github.com/Kylan1940/HealAndFeed/archive/refs/tags/1.0.0.zip) | 3.x.x |
+| Version | Phar | Support |
+|---|---|---|
+| 3.4.0 | [Download](https://poggit.pmmp.io/p/HealAndFeed/3.4.0) | 5.x.x |
+| 3.3.0 | [Download](https://poggit.pmmp.io/p/HealAndFeed/3.3.0) | 5.x.x |
+| 3.2.0 | [Download](https://poggit.pmmp.io/p/HealAndFeed/3.2.0) | 5.x.x |
+| 3.1.0 | [Download](https://poggit.pmmp.io/p/HealAndFeed/3.1.0) | 5.x.x |
+| 3.0.0 | [Download](https://poggit.pmmp.io/p/HealAndFeed/3.0.0) | 5.x.x |
+| 2.2.0 | [Download](https://poggit.pmmp.io/p/HealAndFeed/2.2.0) | 4.x.x |
+| 2.1.0 | [Download](https://poggit.pmmp.io/p/HealAndFeed/2.1.0) | 4.x.x |
+| 2.0.0 | [Download](https://poggit.pmmp.io/p/HealAndFeed/2.0.0) | 4.x.x |
+| 1.1.0 | [Download](https://poggit.pmmp.io/p/HealAndFeed/1.1.0) | 3.x.x |
+| 1.0.0 | [Download](https://poggit.pmmp.io/p/HealAndFeed/1.0.0) | 3.x.x |
 
 # Installation
-1. Download the [plugin](https://github.com/Kylan1940/HealAndFeed/releases/download/3.5.0/HealAndFeed_v3.5.0.phar)
+1. Download the [plugin](https://poggit.pmmp.io/p/HealAndFeed)
 2. Put plugin to **plugins** file
 3. Restart the server
 

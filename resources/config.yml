@@ -8,6 +8,7 @@
 # ===========================================================================
 # Report Plugin: https://github.com/Kylan1940/HealAndFeed/issues/new
 # ===========================================================================
+# Become a Patron: https://patreon.com/Kylan1940
 # Github: https://github.com/Kylan1940
 # Website: https://web.kylan1940.online
 # Discord Community: discord.io/kylancommunity
@@ -32,12 +33,11 @@ prefix: "§7[§9HealAndFeed§7] "
 # Use Permission/Money/Both
 # permission = use permission, no BedrockEconomy required, see the wiki for all permissions: https://github.com/Kylan1940/HealAndFeed/wiki/HealAndFeed-Commands
 # money = use money, BedrockEconomy required
-# both = use permission and money, BedrockEconomy required
 # NOTE: for HealAndFeed UI, you must to add HealAndFeed UI permission
-use: "permission" # (permission/money/both)
+use: "permission" # (permission/money)
 
 # Command:
-no-permission: # Only work if you choose "permission" or "both", except for ui
+no-permission: # Only work if you choose "permission", except for ui
   heal:
     self: "§cYou don't have §aHeal Command §cpermission"
     other: "§cYou don't have §aHeal Other Player Command §cpermission"
@@ -51,15 +51,9 @@ console-command:
   heal: "§c/heal is heal for playerself and only in-game, for console you must /heal (playerOnline)"
   feed: "§c/feed is feed for playerself and only in-game, for console you must /feed (playerOnline)"
   ui: "§c/healfeed is only in-game"
-no-enough-money: # Only work if you choose "money" or "both"
-  heal: 
-    self: ""
-    other: ""
-    all: ""
-  feed:
-    self: ""
-    other: ""
-    all: ""
+no-enough-money: # Only work if you choose "money"
+  heal: ""
+  feed: ""
 
 # Message:
 message:
@@ -89,12 +83,12 @@ ui:
     feed: "§cFeed"
     image:
       # (OPTIONAL) if you don't want add a image, you can blank it or write ""
-      # See information how to use the image: https://web.kylan1940.online/other/how-to-use-image-pmmp-plugin
+      # See information how to use the image: https://direct.kylan1940.site/other/how-to-use-image-pmmp-plugin
       heal: "textures/ui/heart"
       feed: "textures/ui/hungry_full"
 
 # Money
-# It will work if you choose "money" or "both"
+# It will work if you choose "money"
 # BedrockEconomy REQUIRED
 money:
   heal: "200"

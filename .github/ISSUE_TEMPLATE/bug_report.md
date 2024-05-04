@@ -7,7 +7,7 @@ assignees: ''
 
 ---
 
-**Pocketmine-MP Version :*
+**Pocketmine-MP Version :**
 ```Your Pocketmine-MP Version Here```
 
 **PHP Version :**

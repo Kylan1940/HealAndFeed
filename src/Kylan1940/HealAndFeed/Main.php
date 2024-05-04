@@ -135,10 +135,7 @@ class Main extends PluginBase implements Listener {
           }
         }
       }
-      if($this->getConfig()->getNested('use') == "both"){
-        
-      }
-      if($this->getConfig()->getNested('use') != "permission" && $this->getConfig()->getNested('use') != "money" && $this->getConfig()->getNested('use') != "both"){
+      if($this->getConfig()->getNested('use') != "permission" && $this->getConfig()->getNested('use') != "money"){
         $sender->sendMessage($prefix."Your 'use' configuration is wrong, check the instructions, if there's problem again, please report the plugin!");
       }
     } 
@@ -232,10 +229,7 @@ class Main extends PluginBase implements Listener {
           if($this->getConfig()->getNested('use') == "money"){
             
           }
-          if($this->getConfig()->getNested('use') == "both"){
-            
-          }
-          if($this->getConfig()->getNested('use') != "permission" && $this->getConfig()->getNested('use') != "money" && $this->getConfig()->getNested('use') != "both"){
+          if($this->getConfig()->getNested('use') != "permission" && $this->getConfig()->getNested('use') != "money"){
             $sender->sendMessage($prefix."Your 'use' configuration is wrong, check the instructions, if there's problem again, please report the plugin!");
           }
           break;
@@ -261,10 +255,7 @@ class Main extends PluginBase implements Listener {
           if($this->getConfig()->getNested('use') == "money"){
             
           }
-          if($this->getConfig()->getNested('use') == "both"){
-            
-          }
-          if($this->getConfig()->getNested('use') != "permission" && $this->getConfig()->getNested('use') != "money" && $this->getConfig()->getNested('use') != "both"){
+          if($this->getConfig()->getNested('use') != "permission" && $this->getConfig()->getNested('use') != "money"){
             $sender->sendMessage($prefix."Your 'use' configuration is wrong, check the instructions, if there's problem again, please report the plugin!");
           }
           break;
