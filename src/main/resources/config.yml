@@ -1,0 +1,74 @@
+# ===========================================================================
+# ╔╗─╔╗─────╔╗─╔═══╗────╔╗╔═══╗───────╔╗
+# ║║─║║─────║║─║╔═╗║────║║║╔══╝───────║║
+# ║╚═╝╠══╦══╣║─║║─║╠═╗╔═╝║║╚══╦══╦══╦═╝║
+# ║╔═╗║║═╣╔╗║║─║╚═╝║╔╗╣╔╗║║╔══╣║═╣║═╣╔╗║
+# ║║─║║║═╣╔╗║╚╗║╔═╗║║║║╚╝║║║──║║═╣║═╣╚╝║
+# ╚╝─╚╩══╩╝╚╩═╝╚╝─╚╩╝╚╩══╝╚╝──╚══╩══╩══╝
+# ===========================================================================
+# Report Plugin: https://github.com/Kylan1940/PaperMC-HealAndFeed/issues/new
+# ===========================================================================
+# Github: https://github.com/Kylan1940
+# Website: https://kylan1940.netlify.app
+# ===========================================================================
+
+# HEAL AND FEED CONFIGURATION
+#
+# HELP:
+# - " " for new line
+# & for color and special symbols
+# %prefix% for prefix
+# %player% for player (using this for heal other and feed other)
+#
+# example-
+# healall:
+# - "%prefix%Healed Players:"
+# - "&6All players"
+
+# Config Version
+# DON'T CHANGE THIS!!!
+config-version: 1
+
+# Prefix:
+prefix: "&7[&bHealAndFeed&7] "
+
+# Messages:
+messages:
+  heal:
+    - "%prefix%&aYou've been healed."
+  heal-other:
+    - "%prefix%&aYou healed &e%player%&a."
+  heal-all:
+    - "%prefix%&aAll players have been healed."
+  fed:
+    - "%prefix%&aYou're full."
+  feed-other:
+    - "%prefix%&aYou fed &e%player%&a."
+  feed-all:
+    - "%prefix%&aAll players have been fed."
+
+console-command:
+  heal:
+    - "%prefix%&cConsole must specify a player."
+  feed:
+    - "%prefix%&cConsole must use /feed <player>."
+
+no-player:
+  found:
+    - "%prefix%&cThis player does not exist."
+  online:
+    - "%prefix%&cThere are no online players."
+
+no-permission:
+  heal:
+    - "%prefix%&cYou don't have permission to use /heal."
+  healother:
+    - "%prefix%&cYou don't have permission to heal other players."
+  healall:
+    - "%prefix%&cYou don't have permission to use /healall."
+  feed:
+    - "%prefix%&cYou don't have permission to use /feed."
+  feedother:
+    - "%prefix%&cYou don't have permission to feed other players."
+  feedall:
+    - "%prefix%&cYou don't have permission to use /feedall."

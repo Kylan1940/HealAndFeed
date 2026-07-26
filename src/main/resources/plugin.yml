@@ -1,0 +1,39 @@
+name: HealAndFeed
+version: '1.0.0'
+main: org.kylan1940.healandfeed.HealAndFeed
+api-version: '1.21'
+author: Kylan1940
+
+commands:
+  heal:
+    description: Heal yourself or another player.
+    usage: "/heal [player]"
+  healall:
+    description: Heal all online players.
+    usage: "/healall"
+  feed:
+    description: Feed yourself or another player.
+    usage: "/feed [player]"
+  feedall:
+    description: Feed all online players.
+    usage: "/feedall"
+
+permissions:
+  healandfeed-heal.command:
+    description: Allows the player to use /heal.
+    default: op
+  healandfeed-healother.command:
+    description: Allows the player to use /heal <player>.
+    default: op
+  healandfeed-healall.command:
+    description: Allows the player to use /healall.
+    default: op
+  healandfeed-feed.command:
+    description: Allows the player to use /feed.
+    default: op
+  healandfeed-feedother.command:
+    description: Allows the player to use /feed <player>.
+    default: op
+  healandfeed-feedall.command:
+    description: Allows the player to use /feedall.
+    default: op
