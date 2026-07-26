@@ -15,10 +15,10 @@ Heal and Feed Command For PaperMC. If you are have a question, please make a [is
 # Download
 | Version | JAR | Support      |
 |---|-----|--------------|
-| 1.0.0 | Coming Soon | 1.21 - 26.0+ |
+| 1.0.0 | [Coming Soon](https://github.com/Kylan1940/PaperMC-HealAndFeed/releases/download/1.0.0/HealAndFeed-1.0.0.jar) | 1.21 - 26.0+ |
 
 # Installation
-1. Download the [plugin]()
+1. Download the [plugin](https://github.com/Kylan1940/PaperMC-HealAndFeed/releases/download/1.0.0/HealAndFeed-1.0.0.jar)
 2. Put plugin to **plugins** file
 3. Restart the server
 
