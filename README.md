@@ -13,9 +13,9 @@ Heal and Feed Command For PaperMC. If you are have a question, please make a [is
 >- Cooldown (soon)
 
 # Download
-| Version | JAR | Support      |
-|---|-----|--------------|
-| 1.0.0 | [Coming Soon](https://github.com/Kylan1940/PaperMC-HealAndFeed/releases/download/1.0.0/HealAndFeed-1.0.0.jar) | 1.21 - 26.0+ |
+| Version | JAR                                                                                                        | Support      |
+|---|------------------------------------------------------------------------------------------------------------|--------------|
+| 1.0.0 | [DOWNLOAD](https://github.com/Kylan1940/PaperMC-HealAndFeed/releases/download/1.0.0/HealAndFeed-1.0.0.jar) | 1.21 - 26.0+ |
 
 # Installation
 1. Download the [plugin](https://github.com/Kylan1940/PaperMC-HealAndFeed/releases/download/1.0.0/HealAndFeed-1.0.0.jar)
