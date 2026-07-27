@@ -1,6 +1,6 @@
 [![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/P5P1DB75T)
 # Description
-Heal and Feed Commands Plugin For Minecraft Java Server. If you are have a question, please make a [issues](https://github.com/Kylan1940/PaperMC-HealAndFeed/issues/new)
+Heal and Feed Commands Plugin For Minecraft Java Server. If you are have a question, please make a [issues](https://github.com/Kylan1940/HealAndFeed/issues/new)
 
 # Features
 >- Simple
@@ -13,12 +13,12 @@ Heal and Feed Commands Plugin For Minecraft Java Server. If you are have a quest
 >- Cooldown (soon)
 
 # Download
-| Version | JAR                                                                                                        | Support      |
-|---|------------------------------------------------------------------------------------------------------------|--------------|
-| 1.0.0 | [DOWNLOAD](https://github.com/Kylan1940/PaperMC-HealAndFeed/releases/download/1.0.0/HealAndFeed-1.0.0.jar) | 1.21 - 26.0+ |
+| Version | JAR                                                                                                  | Minecraft Support | Software Support                                         |
+|---------|------------------------------------------------------------------------------------------------------|-------------------|----------------------------------------------------------|
+| 1.0.0   | [DOWNLOAD](https://github.com/Kylan1940/HealAndFeed/releases/download/1.0.0/HealAndFeed-1.0.0.jar)   | 1.21 - 26.0+      | Bukkit, Spigot, Paper, Folia, Purpur, Pufferfish, Leaves |
 
 # Installation
-1. Download the [plugin](https://github.com/Kylan1940/PaperMC-HealAndFeed/releases/download/1.0.0/HealAndFeed-1.0.0.jar)
+1. Download the [plugin](https://github.com/Kylan1940/HealAndFeed/releases/download/1.0.0/HealAndFeed-1.0.0.jar)
 2. Put plugin to **plugins** file
 3. Restart the server
 
