@@ -13,9 +13,9 @@ Heal and Feed Commands Plugin For Minecraft Java Server. If you are have a quest
 >- Cooldown (soon)
 
 # Download
-| Version | JAR                                                                                                  | Minecraft Support | Software Support                                         |
-|---------|------------------------------------------------------------------------------------------------------|-------------------|----------------------------------------------------------|
-| 1.0.0   | [DOWNLOAD](https://github.com/Kylan1940/HealAndFeed/releases/download/1.0.0/HealAndFeed-1.0.0.jar)   | 1.21 - 26.0+      | Bukkit, Spigot, Paper, Folia, Purpur, Pufferfish, Leaves |
+| Version | JAR                                                                                                  | Minecraft Support | Software Support                                              |
+|---------|------------------------------------------------------------------------------------------------------|-------------------|---------------------------------------------------------------|
+| 1.0.0   | [DOWNLOAD](https://github.com/Kylan1940/HealAndFeed/releases/download/1.0.0/HealAndFeed-1.0.0.jar)   | 1.21 - 26.0+      | Paper, Spigot, CraftBukkit, Folia, Purpur, Pufferfish, Leaves |
 
 # Installation
 1. Download the [plugin](https://github.com/Kylan1940/HealAndFeed/releases/download/1.0.0/HealAndFeed-1.0.0.jar)
