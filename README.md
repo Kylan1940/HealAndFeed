@@ -1,14 +1,14 @@
 [![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/P5P1DB75T)
 # Description
-Heal and Feed Command For PaperMC. If you are have a question, please make a [issues](https://github.com/Kylan1940/PaperMC-HealAndFeed/issues/new)
+Heal and Feed Commands Plugin For Minecraft Java Server. If you are have a question, please make a [issues](https://github.com/Kylan1940/PaperMC-HealAndFeed/issues/new)
 
 # Features
 >- Simple
 >- Configuration
 >- Can heal and feed other player
 >- Heal All and Feed All online player(s)
->- With UI (soon)
 >- Console Support
+>- Compatible with 7 Server Software (Paper, Spigot, CraftBukkit, Folia, Purpur, Pufferfish, Leaves)
 >- Pay for heal and feed (soon)
 >- Cooldown (soon)
 
