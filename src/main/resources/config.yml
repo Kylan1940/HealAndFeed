@@ -27,7 +27,7 @@
 
 # Config Version
 # DON'T CHANGE THIS!!!
-config-version: 1
+config-version: 2
 
 # Prefix:
 prefix: "&7[&bHealAndFeed&7] "
@@ -52,6 +52,12 @@ console-command:
     - "%prefix%&cConsole must specify a player."
   feed:
     - "%prefix%&cConsole must use /feed <player>."
+  healall:
+    - "%prefix%&aAll online players have been healed."
+  feedall:
+    - "%prefix%&aAll online players have been fed."
+  player-only:
+    - "%prefix%This command is player-only"
 
 no-player:
   found:

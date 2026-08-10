@@ -17,6 +17,13 @@ commands:
   feedall:
     description: Feed all online players.
     usage: "/feedall"
+  healfeed:
+    description: "Open HealAndFeed GUI"
+    usage: "/healfeed"
+    aliases:
+      - haf
+      - healmenu
+      - feedmenu
 
 permissions:
   healandfeed-heal.command:

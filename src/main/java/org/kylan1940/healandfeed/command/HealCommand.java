@@ -10,26 +10,28 @@ import org.kylan1940.healandfeed.message.MessageUtil;
 public class HealCommand implements CommandExecutor {
 
     @Override
-    public boolean onCommand(@NotNull CommandSender sender,
-                             @NotNull Command command,
-                             @NotNull String label,
-                             @NotNull String[] args) {
+    public boolean onCommand(
+            @NotNull CommandSender sender,
+            @NotNull Command command,
+            @NotNull String label,
+            @NotNull String[] args
+    ) {
 
         if (args.length == 0) {
 
-            if (!(sender instanceof Player player)) {
+            if (!(sender instanceof Player)) {
                 MessageUtil.send(sender, "console-command.heal");
                 return true;
             }
+
+            Player player = (Player) sender;
 
             if (!player.hasPermission("healandfeed-heal.command")) {
                 MessageUtil.send(player, "no-permission.heal");
                 return true;
             }
 
-            heal(player);
-
-            MessageUtil.send(player, "messages.heal");
+            execute(player);
             return true;
         }
 
@@ -45,17 +47,36 @@ public class HealCommand implements CommandExecutor {
             return true;
         }
 
+        execute(sender, target);
+        return true;
+    }
+
+    public void execute(Player player) {
+
+        heal(player);
+
+        MessageUtil.send(player, "messages.heal");
+    }
+
+    public void execute(
+            CommandSender sender,
+            Player target
+    ) {
+
         heal(target);
         MessageUtil.send(target, "messages.heal");
 
         if (!target.equals(sender)) {
             MessageUtil.send(sender, "messages.heal-other", "%player%", target.getName());
         }
-
-        return true;
     }
 
     private void heal(Player player) {
+
+        if (player.getAttribute(org.bukkit.attribute.Attribute.MAX_HEALTH) == null) {
+            return;
+        }
+
         double maxHealth = player.getAttribute(org.bukkit.attribute.Attribute.MAX_HEALTH).getValue();
         player.setHealth(maxHealth);
     }

@@ -10,15 +10,16 @@ import org.kylan1940.healandfeed.message.MessageUtil;
 public class FeedCommand implements CommandExecutor {
 
     @Override
-    public boolean onCommand(@NotNull CommandSender sender,
-                             @NotNull Command command,
-                             @NotNull String label,
-                             @NotNull String[] args) {
+    public boolean onCommand(
+            @NotNull CommandSender sender,
+            @NotNull Command command,
+            @NotNull String label,
+            @NotNull String[] args
+    ) {
 
         if (args.length == 0) {
 
-            if (!(sender instanceof Player)) {
-                MessageUtil.send(sender, "console-command.feed");
+            if (!(sender instanceof Player)) {MessageUtil.send(sender, "console-command.feed");
                 return true;
             }
 
@@ -29,8 +30,7 @@ public class FeedCommand implements CommandExecutor {
                 return true;
             }
 
-            feed(player);
-            MessageUtil.send(player, "messages.fed");
+            execute(player);
             return true;
         }
 
@@ -46,20 +46,30 @@ public class FeedCommand implements CommandExecutor {
             return true;
         }
 
+        execute(sender, target);
+        return true;
+    }
+
+    public void execute(Player player) {
+        feed(player);
+        MessageUtil.send(player, "messages.fed");
+    }
+
+    public void execute(
+            CommandSender sender,
+            Player target
+    ) {
+
         feed(target);
         MessageUtil.send(target, "messages.fed");
 
         if (!target.equals(sender)) {
             MessageUtil.send(sender, "messages.feed-other", "%player%", target.getName());
         }
-
-        return true;
     }
-
 
     private void feed(Player player) {
         player.setFoodLevel(20);
-        player.setSaturation(20f);
+        player.setSaturation(20.0F);
     }
-
 }

@@ -7,7 +7,7 @@ import java.io.File;
 
 public class ConfigUpdater {
 
-    private static final int CONFIG_VERSION = 1;
+    private static final int CONFIG_VERSION = 2;
 
     public static void update(JavaPlugin plugin) {
 
@@ -26,20 +26,12 @@ public class ConfigUpdater {
             return;
         }
 
-        plugin.getLogger().info(
-                "Your config isn't the latest. " +
-                        "Renaming old config to config-" + currentVersion + ".yml"
-        );
+        plugin.getLogger().info("Your config isn't the latest. " + "Renaming old config to config-" + currentVersion + ".yml");
 
-        File backup = new File(
-                plugin.getDataFolder(),
-                "config-" + currentVersion + ".yml"
-        );
+        File backup = new File(plugin.getDataFolder(), "config-" + currentVersion + ".yml");
 
         if (!configFile.renameTo(backup)) {
-            plugin.getLogger().warning(
-                    "Failed to backup old config.yml!"
-            );
+            plugin.getLogger().warning("Failed to backup old config.yml!");
             return;
         }
 
@@ -47,8 +39,6 @@ public class ConfigUpdater {
 
         plugin.reloadConfig();
 
-        plugin.getLogger().info(
-                "Config updated to version " + CONFIG_VERSION
-        );
+        plugin.getLogger().info("Config updated to version " + CONFIG_VERSION);
     }
 }
