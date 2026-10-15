@@ -52,10 +52,7 @@ public class HealCommand implements CommandExecutor {
     }
 
     public void execute(Player player) {
-
-        heal(player);
-
-        MessageUtil.send(player, "messages.heal");
+        if(!player.hasPermission())
     }
 
     public void execute(

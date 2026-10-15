@@ -7,7 +7,7 @@ import java.io.File;
 
 public class ConfigUpdater {
 
-    private static final int CONFIG_VERSION = 2;
+    private static final int CONFIG_VERSION = 3;
 
     public static void update(JavaPlugin plugin) {
 

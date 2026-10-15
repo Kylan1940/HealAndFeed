@@ -1,5 +1,5 @@
 name: HealAndFeed
-version: '1.1.0'
+version: '1.2.0'
 main: org.kylan1940.healandfeed.HealAndFeed
 api-version: '1.21'
 author: Kylan1940
@@ -43,4 +43,10 @@ permissions:
     default: op
   healandfeed-feedall.command:
     description: Allows the player to use /feedall.
+    default: op
+  healandfeed.bypass.heal:
+    description: Bypass heal cooldoown
+    default: op
+  healandfeed.bypass.feed:
+    description: Bypass feed cooldown
     default: op

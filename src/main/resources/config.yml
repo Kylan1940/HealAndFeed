@@ -18,7 +18,8 @@
 # - " " for new line
 # & for color and special symbols
 # %prefix% for prefix
-# %player% for player (using this for heal other and feed other)
+# %player% for player (used for heal other and feed other)
+# %time% for remaining cooldown time in seconds
 #
 # example-
 # healall:
@@ -27,10 +28,16 @@
 
 # Config Version
 # DON'T CHANGE THIS!!!
-config-version: 2
+config-version: 3
 
 # Prefix:
 prefix: "&7[&bHealAndFeed&7] "
+
+# Cooldown
+# Set to 0 to disable cooldown
+cooldown:
+  heal: 0
+  feed: 0
 
 # Messages:
 messages:
@@ -46,6 +53,11 @@ messages:
     - "%prefix%&aYou fed &e%player%&a."
   feed-all:
     - "%prefix%&aAll players have been fed."
+  cooldown:
+    heal:
+      - "%prefix%&cYou must wait &e%time%&cs before using heal again."
+    feed:
+      - "%prefix%&cYou must wait &e%time%&cs before using feed again."
 
 console-command:
   heal:
