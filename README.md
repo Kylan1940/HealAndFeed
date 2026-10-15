@@ -2,9 +2,9 @@
 # Description
 Heal and Feed Commands Plugin For Minecraft Java Server. If you are have a question, please make a [issues](https://github.com/Kylan1940/HealAndFeed/issues/new)
 
-# Changelogs [1.1.0]
->- Added GUI Menu
->- Changed configuration
+# Changelogs [1.2.0]
+>- Added cooldown feature
+>- Changed Configuration
 
 # Features
 >- Simple
@@ -13,18 +13,19 @@ Heal and Feed Commands Plugin For Minecraft Java Server. If you are have a quest
 >- Heal All and Feed All online player(s)
 >- GUI Menu
 >- Console Support
+>- Cooldown
 >- Compatible with 7 Server Software (Paper, Spigot, CraftBukkit, Folia, Purpur, Pufferfish, Leaves)
 >- Pay for heal and feed (soon)
->- Cooldown (soon)
 
 # Download
 | Version | JAR                                                                                                | Minecraft Support | Software Support                                              |
 |---------|----------------------------------------------------------------------------------------------------|-------------------|---------------------------------------------------------------|
+| 1.2.0   | [DOWNLOAD](https://github.com/Kylan1940/HealAndFeed/releases/download/1.2.0/HealAndFeed-1.2.0.jar) | 1.21 - 26.0+      | Paper, Spigot, CraftBukkit, Folia, Purpur, Pufferfish, Leaves |
 | 1.1.0   | [DOWNLOAD](https://github.com/Kylan1940/HealAndFeed/releases/download/1.1.0/HealAndFeed-1.1.0.jar) | 1.21 - 26.0+      | Paper, Spigot, CraftBukkit, Folia, Purpur, Pufferfish, Leaves |
 | 1.0.0   | [DOWNLOAD](https://github.com/Kylan1940/HealAndFeed/releases/download/1.0.0/HealAndFeed-1.0.0.jar) | 1.21 - 26.0+      | Paper, Spigot, CraftBukkit, Folia, Purpur, Pufferfish, Leaves |
 
 # Installation
-1. Download the [plugin](https://github.com/Kylan1940/HealAndFeed/releases/download/1.1.0/HealAndFeed-1.1.0.jar)
+1. Download the [plugin](https://github.com/Kylan1940/HealAndFeed/releases/download/1.2.0/HealAndFeed-1.2.0.jar)
 2. Put plugin to **plugins** file
 3. Restart the server
 
@@ -38,3 +39,14 @@ Heal and Feed Commands Plugin For Minecraft Java Server. If you are have a quest
 | /feed <player>  | Feed other player  | healandfeed-feedother.command | OP       | YES             | NONE                       |
 | /feedall        | Feed all player(s) | healandfeed-feedall.command   | OP       | YES             | NONE                       |
 | /healfeed       | GUI Menu           | NONE                          | YES      | NO              | /haf, /healmenu, /feedmenu |
+| NONE            | Bypass heal cooldown | healandfeed.bypass.heal     | OP       | NO              | NONE                       |
+| NONE            | Bypass feed cooldown | healandfeed.bypass.feed     | OP       | NO              | NONE                       |
+
+# Cooldown
+Cooldown is set in `config.yml` in seconds. Set to `0` to disable it.
+```yaml
+cooldown:
+  heal: 0
+  feed: 0
+```
+Cooldown applies to `/heal`, `/heal <player>`, `/feed`, `/feed <player>` and the GUI buttons. It does not apply to `/healall`, `/feedall` and console.
