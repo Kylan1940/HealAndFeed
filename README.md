@@ -3,7 +3,7 @@
 Heal and Feed Commands Plugin For Minecraft Java Server. If you are have a question, please make a [issues](https://github.com/Kylan1940/HealAndFeed/issues/new)
 
 # Changelogs [1.2.0]
->- Added cooldown feature
+>- Added cooldown and bypass permission
 >- Changed Configuration
 
 # Features
