@@ -3,7 +3,7 @@
 Heal and Feed Commands Plugin For Minecraft Java Server. If you are have a question, please make a [issues](https://github.com/Kylan1940/HealAndFeed/issues/new)
 
 # Changelogs [1.2.0]
->- Added cooldown feature
+>- Added cooldown and bypass permission
 >- Changed Configuration
 
 # Features
@@ -30,17 +30,17 @@ Heal and Feed Commands Plugin For Minecraft Java Server. If you are have a quest
 3. Restart the server
 
 # Permission
-| Command         | Description        | Permission                    | Default  | Console Support | Aliases                    |
-|-----------------|--------------------|-------------------------------|----------|-----------------|----------------------------|
-| /heal           | Heal yourself      | healandfeed-heal.command      | OP       | NO              | NONE                       |
-| /heal <player>  | Heal other player  | healandfeed-healother.command | OP       | YES             | NONE                       |
-| /healall        | Heal all player(s) | healandfeed-healall.command   | OP       | YES             | NONE                       |
-| /feed           | Feed yourself      | healandfeed-feed.command      | OP       | NO              | NONE                       |
-| /feed <player>  | Feed other player  | healandfeed-feedother.command | OP       | YES             | NONE                       |
-| /feedall        | Feed all player(s) | healandfeed-feedall.command   | OP       | YES             | NONE                       |
-| /healfeed       | GUI Menu           | NONE                          | YES      | NO              | /haf, /healmenu, /feedmenu |
-| NONE            | Bypass heal cooldown | healandfeed.bypass.heal     | OP       | NO              | NONE                       |
-| NONE            | Bypass feed cooldown | healandfeed.bypass.feed     | OP       | NO              | NONE                       |
+| Command        | Description          | Permission                    | Default  | Console Support | Aliases                    |
+|----------------|----------------------|-------------------------------|----------|-----------------|----------------------------|
+| /heal          | Heal yourself        | healandfeed-heal.command      | OP       | NO              | NONE                       |
+| /heal <player> | Heal other player    | healandfeed-healother.command | OP       | YES             | NONE                       |
+| /healall       | Heal all player(s)   | healandfeed-healall.command   | OP       | YES             | NONE                       |
+| /feed          | Feed yourself        | healandfeed-feed.command      | OP       | NO              | NONE                       |
+| /feed <player> | Feed other player    | healandfeed-feedother.command | OP       | YES             | NONE                       |
+| /feedall       | Feed all player(s)   | healandfeed-feedall.command   | OP       | YES             | NONE                       |
+| /healfeed      | GUI Menu             | NONE                          | YES      | NO              | /haf, /healmenu, /feedmenu |
+| ---            | Bypass heal cooldown | healandfeed.bypass.heal       | OP       | ---             | ---                        |
+| ---            | Bypass feed cooldown | healandfeed.bypass.feed       | OP       | ---             | ---                        |
 
 # Cooldown
 Cooldown is set in `config.yml` in seconds. Set to `0` to disable it.
